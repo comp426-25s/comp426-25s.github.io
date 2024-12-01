@@ -1,0 +1,15 @@
+# Contains the course schedule.
+
+- code: L01
+  date: Wed Jan 10
+  title: HTML Fundamentals
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
+
+- code: L00
+  date: Mon Jan 8
+  title: Welcome to COMP 426!
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null

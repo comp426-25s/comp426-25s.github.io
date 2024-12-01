@@ -1,9 +1,13 @@
+import ScheduleListing from '@/components/widgets/schedule-listing';
 import { ScrollText } from 'lucide-react';
 import { BookText } from 'lucide-react';
 import { Users } from 'lucide-react';
 import { Clock } from 'lucide-react';
 
+import Schedule from '@/components/widgets/schedule';
+
 export default function Home() {
+
   return (
     <>
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl">
@@ -60,6 +64,7 @@ export default function Home() {
       <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
         Course Schedule
       </h2>
+      <Schedule />
     </>
   );
 }
