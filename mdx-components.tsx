@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { ScrollText, TriangleAlert } from 'lucide-react';
+import { ScrollText, TriangleAlert, Youtube, Presentation } from 'lucide-react';
+import { Button } from "@/components/ui/button"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -61,6 +62,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     AlertTitle,
     ScrollText,
     TriangleAlert,
+    Youtube,
+    Presentation,
+    Button,
     ...components,
   }
 }

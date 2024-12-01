@@ -1,8 +1,10 @@
 import { ScheduleItem } from '@/course/models/models';
+import { Button } from '../ui/button';
+import { Youtube } from 'lucide-react';
 
 export default function ScheduleListing(props: {item: ScheduleItem}) {
     return (
-        <div className="flex flex-row w-full items-center py-2">
+        <div className="flex flex-row w-full items-center">
             {/* Identity Section */}
             <div className="flex flex-row items-center">
                 {/* Date Section */}
@@ -14,8 +16,8 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
             </div>
             {/* Buttons Section */}
             <div className="flex flex-row items-center ml-auto">
-                <p>Button</p>
-                <p>Button</p>
+                <Button variant="link">Recording</Button>
+                <Button variant="link">Slides</Button>
             </div>
         </div>
     );

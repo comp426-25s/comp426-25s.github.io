@@ -5,6 +5,7 @@ import { Users } from 'lucide-react';
 import { Clock } from 'lucide-react';
 
 import Schedule from '@/components/widgets/schedule';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -32,28 +33,28 @@ export default function Home() {
         {/* Left column */}
         <div className="flex flex-col w-1/2">
           {/* Syllabus button */}
-          <div className="flex flex-row items-center p-2 mt-2">
+          <Link href="/syllabus" className="flex flex-row items-center p-2 mt-2 hover:bg-slate-100">
             <ScrollText className="h-5 w-5 stroke-yellow-700" />
             <span className="ml-2 font-medium underline decoration-slate-400">Syllabus</span>
-          </div>
+          </Link>
           {/* Extra Resources button */}
-          <div className="flex flex-row items-center p-2">
+          <Link href="/extra-resources" className="flex flex-row items-center p-2 hover:bg-slate-100">
             <BookText className="h-5 w-5 stroke-slate-500" />
             <span className="ml-2 font-medium underline decoration-slate-400">Extra Resources</span>
-          </div>
+          </Link>
         </div>
         {/* Right column */}
         <div className="flex flex-col w-1/2">
           {/* Team 426 button */}
-          <div className="flex flex-row items-center p-2 mt-2">
+          <Link href="/team-426" className="flex flex-row items-center p-2 mt-2 hover:bg-slate-100">
             <Users className="h-5 w-5 stroke-green-700" />
             <span className="ml-2 font-medium underline decoration-slate-400">Team 426</span>
-          </div>
+          </Link>
           {/* Office Hours button */}
-          <div className="flex flex-row items-center p-2">
+          <Link href="/office-hours" className="flex flex-row items-center p-2 hover:bg-slate-100">
             <Clock className="h-5 w-5 stroke-violet-500" />
             <span className="ml-2 font-medium underline decoration-slate-400">Office Hours</span>
-          </div>
+          </Link>
         </div>
       </div>
 
