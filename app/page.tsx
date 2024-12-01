@@ -1,101 +1,65 @@
-import Image from "next/image";
+import { ScrollText } from 'lucide-react';
+import { BookText } from 'lucide-react';
+import { Users } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl">
+        COMP 426: Modern Web Programming
+      </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <blockquote className="mt-6 border-l-2 pl-6 text-slate-500">
+        Spring 2025 Section of COMP 426 at UNC-Chapel Hill.
+      </blockquote>
+          
+      <p className="leading-7 mt-4 text-base">
+        👋 <strong>Hello students, welcome to COMP 426!</strong>
+      </p>
+      <p className="leading-7  mt-4 text-base">
+      This special, pilot section of COMP 426 introduces students to the fundamentals modern, full-stack web development with an emphasis on today’s best practices, modern tooling, and leading industry-prevalent frameworks.
+      </p>
+      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+        Important Links
+      </h2>
+
+      <div className="flex flex-row w-full">
+        {/* Left column */}
+        <div className="flex flex-col w-1/2">
+          {/* Syllabus button */}
+          <div className="flex flex-row items-center p-2 mt-2">
+            <ScrollText className="h-5 w-5 stroke-yellow-700" />
+            <span className="ml-2 font-medium underline decoration-slate-400">Syllabus</span>
+          </div>
+          {/* Extra Resources button */}
+          <div className="flex flex-row items-center p-2">
+            <BookText className="h-5 w-5 stroke-slate-500" />
+            <span className="ml-2 font-medium underline decoration-slate-400">Extra Resources</span>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {/* Right column */}
+        <div className="flex flex-col w-1/2">
+          {/* Team 426 button */}
+          <div className="flex flex-row items-center p-2 mt-2">
+            <Users className="h-5 w-5 stroke-green-700" />
+            <span className="ml-2 font-medium underline decoration-slate-400">Team 426</span>
+          </div>
+          {/* Office Hours button */}
+          <div className="flex flex-row items-center p-2">
+            <Clock className="h-5 w-5 stroke-violet-500" />
+            <span className="ml-2 font-medium underline decoration-slate-400">Office Hours</span>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+        Assignments
+      </h2>
+
+      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+        Course Schedule
+      </h2>
+    </>
   );
 }
