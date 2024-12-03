@@ -9,6 +9,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { usePathname } from 'next/navigation'
+import React from "react";
 
 export default function Header() {
 
@@ -16,21 +17,24 @@ export default function Header() {
     const pathComponents = path.split('/').splice(1).filter((s) => s !== '');
     console.log(pathComponents);
     return (
-        <div className="flex h-16 items-center">
-        <Breadcrumb>
-        <BreadcrumbList className="!list-none">
-            <BreadcrumbItem>
-                <BreadcrumbLink href="/">COMP 426</BreadcrumbLink>
-            </BreadcrumbItem>
-            {pathComponents.length > 0 && pathComponents.map((component, index) => (
-                <div key={index} >
-                <BreadcrumbSeparator />
+        <div className="flex flex-row w-full h-16 items-center">
+        <Breadcrumb className="w-full">
+            <BreadcrumbList className="!list-none">
                 <BreadcrumbItem>
-                    <BreadcrumbLink className="capitalize">{ component }</BreadcrumbLink>
+                    <BreadcrumbLink href="/">COMP 426</BreadcrumbLink>
                 </BreadcrumbItem>
-                </div>
-            ))}
-        </BreadcrumbList>
+                {pathComponents.length > 0 && pathComponents.map((component, index) => {
+                    const componentTitle = component.replace("-", " ");
+                    return (
+                        <React.Fragment key={index} >
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                            <BreadcrumbLink className="capitalize">{ componentTitle }</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        </React.Fragment>
+                    )
+                })}
+            </BreadcrumbList>
         </Breadcrumb>
         </div>
     );
