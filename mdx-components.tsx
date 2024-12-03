@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </h2>
     ),
     h3: ({ children }) => (
-        <h3 className="mt-6 scroll-m-20 text-xl font-semibold tracking-tight">
+        <h3 className="text-red-200 text-xl mt-6 scroll-m-20 font-semibold tracking-tight">
             { children }
         </h3>
     ),
@@ -26,7 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </h4>
     ),
     p: ({ children }) => (
-        <p className="leading-7 [&:not(:first-child)]:pt-6 text-base">
+        <p className="mt-2 text-base">
             { children }
         </p>
     ),
@@ -56,6 +56,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
             { children }
         </td>
+    ),
+    ul: ({ children }) => (
+        <ul className="!list-disc">
+            { children }
+        </ul>
     ),
     Alert,
     AlertDescription,

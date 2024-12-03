@@ -16,6 +16,7 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/mdx": "^2.0.13",
+    "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fs": "^0.0.1-security",
@@ -26,6 +27,7 @@
     "next-plugin-yaml": "^1.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "yaml-loader": "^0.8.1"
