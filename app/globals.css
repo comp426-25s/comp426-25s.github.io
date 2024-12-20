@@ -65,8 +65,15 @@ body {
 @layer base {
   ul, ol {
     list-style: revert !important;
-    list-style-position: inside !important;
+    list-style-position: outside !important;
+    margin-left: 22px !important;
   }
+
+  .link-style {
+    color: blue !important;
+    text-decoration: underline !important;
+  }
+
   * {
     @apply border-border;
   }

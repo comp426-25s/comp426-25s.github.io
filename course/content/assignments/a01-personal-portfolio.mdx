@@ -19,8 +19,206 @@ You should be familiar with:
 
 We also assume that you are up-to-date on all readings and class materials.
 
+Make sur that you have [Visual Studio Code](https://code.visualstudio.com/) installed on your machine. This will be our primary IDE for this course.
+
+## Expectations
+
+In this assignment, you will create a personal website that showcases yourself, your skills, courses you have taken at UNC, and any projects you have worked on! You can think of this almost like a digital resume. Personal websites are a great way to showcase the work you have done and can be a fun way to express yourself creatively. It can also be a launching pad to write blog posts or other content if you wish. 
+
+{/* ### Rubric */}
+
+<div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+        <tbody>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+                    Requirement
+                </th>
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right w-4">
+                    Points
+                    ( /100)
+                </th>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Content</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                <strong>40</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Header</strong> section that includes:
+                <ul>
+                    <li>Your name</li>
+                    <li>Profile photo</li>
+                    <li>Short bio about yourself</li>
+                </ul>
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>About</strong> section that includes a longer bio about yourself. Include your major and interests (academic and even non-academic!).
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Classes</strong> section with some relevant COMP (or other) courses you have taken at UNC. Feel free to include COMP 426!
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Skills</strong> section with a list of <em>programming languages</em>, <em>frameworks</em>, <em>tools</em>, etc. that you are familiar with.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>HTML Requirements</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>20</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website's HTML includes <em>metatada</em> including the website's <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;title&gt;</code> and connects to a <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">styles.css</code> file.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website connects to a <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">styles.css</code> file using the <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;link&gt;</code> tag. To recieve this points, styles must be applied on elements from the CSS file - styles should not be applied inline as attributes in the HTML directly!
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Styling Requirements</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>20</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                You utilize a **flexbox** at least once in your CSS.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website is *visually appealing* and puts in effort including styling with CSS. We recommend trying to have fun with designing here! Create something you would want to show off.
+                <ul>
+                    <li>One of the biggest elements to good design involves <strong><em>colors</em></strong>. Finding good matching colors can be hard - but we recommend checking out [this website](https://colorhunt.co) to find a nice color palette! This website also includes <em>hex codes</em> that can be applied. We recommend trying to set your site's background color to a lighter tone in the palette, then use darker colors to style text and other elements. If you have color questions, feel free to ask us in office hours! <strong>Please link your chosen palette in a comment in your CSS file.</strong></li>
+                    <li>Another key element to design is <strong><em>typography</em></strong> - the science of fonts! [Google Fonts](https://fonts.google.com/knowledge) is a terrific resource for both learning about fonts in general (and how to apply different types of fonts where) and finding great fonts to use. On the "Fonts" tab of the site, each font is associated with instructions on how to import this font so you can use it in your website. Press on a font, then "Get font", then "Get embed code". This should provide you with <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;link&gt;</code> tags and CSS classes will allow you to use custom fonts in your project.</li>
+                </ul>
+
+                We will have an entire module on design later in the course, where we will dive deeper into colors and typography. For now, feel free to experiment - and ask questions!
+
+                <strong>Grading</strong>
+
+                The COMP 426 staff will assign a rating for each project. The final grade will be determined by the average of the ratings, rounded up to the nearest point.
+
+                <ul>
+                    <li>**Great Effort (10)**: Great styling effort has been applied.</li>
+                    <li>**Adaquate Effort (7)**: Baseline styling effort has been applied.</li>
+                    <li>**Low Effort (3)**: Little to no styling effort has been applied.</li>
+                </ul>
+
+                *Note: This approach is taken to try and reduce the subjectivity of these styling points from one grader to another.*
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                If you use external resources to help you with CSS and styling your website, please source it in a comment in your CSS file!
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Deployment</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>20</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website is deployed using GitHub pages and is accessible at a URL with the format: `https://username.github.io/comp426-username/`.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                20
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+        <tbody>
+        <tr className="m-0 border-t p-0 bg-muted">
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+                    Extra Credit
+                </th>
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right !w-4">
+                    Points
+                </th>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The team will recognize an website exceptionally good (in terms of design and content) with an extra credit of 5 points!
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 ## Getting Started
 
 To get started on this assignment, please complete the following steps:
 
 1. Accept the **GitHub Classroom** assignment [here]().
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+
+
+## Assignment Instructions
+
+1. Create a new HTML file called `index.html` in the root directory of your repository. This will be the main page of your website.

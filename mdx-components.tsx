@@ -16,7 +16,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </h2>
     ),
     h3: ({ children }) => (
-        <h3 className="text-red-200 text-xl mt-6 scroll-m-20 font-semibold tracking-tight">
+        <h3 className="text-xl mt-6 scroll-m-20 font-semibold tracking-tight">
             { children }
         </h3>
     ),
@@ -31,9 +31,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </p>
     ),
     a: ({href, children}) => (
-        <a href={href} className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+        <a href={href} target="_blank" className="link-style">
             { children }
         </a>
+    ),
+    code: ({ children }) => (
+        <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">
+            { children }
+        </code>
     ),
     blockquote: ({ children }) => (
         <blockquote className="mt-6 border-l-2 pl-6 italic">
