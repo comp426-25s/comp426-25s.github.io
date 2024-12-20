@@ -30,6 +30,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             { children }
         </p>
     ),
+    a: ({href, children}) => (
+        <a href={href} className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+            { children }
+        </a>
+    ),
     blockquote: ({ children }) => (
         <blockquote className="mt-6 border-l-2 pl-6 italic">
             { children }

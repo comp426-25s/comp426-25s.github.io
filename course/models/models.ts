@@ -10,3 +10,10 @@ export interface ScheduleItem {
     youtubeUrl: string | null;
     slidesUrl: string | null;
 }
+
+export interface AssignmentItem {
+    code: string;
+    due: string;
+    title: string;
+    url: string | null;
+}
