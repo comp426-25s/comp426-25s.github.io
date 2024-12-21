@@ -4,6 +4,10 @@ import { ScrollText, TriangleAlert, Youtube, Presentation } from 'lucide-react';
 import { Button } from "@/components/ui/button"
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import CodeBlock from './components/widgets/codeblock';
+import CodeComparison from './components/ui/code-comparison';
+import Code from './components/ui/code';
+import Safari from './components/ui/safari';
+import { File, Folder, Tree } from './components/ui/file-tree';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -82,7 +86,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Youtube,
     Presentation,
     Button,
+    Code,
     CodeBlock,
+    CodeComparison,
+    Safari,
+    Tree,
+    Folder,
+    File,
     ...components,
   }
 }

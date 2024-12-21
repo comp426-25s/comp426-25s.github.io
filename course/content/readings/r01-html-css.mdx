@@ -1,0 +1,226 @@
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+# R01: HTML and CSS Fundamentals
+
+> Written by <span className="font-semibold">Ajay Gandecha</span> for <em>COMP 426: Modern Web Programming</em>.
+
+## Introduction
+
+
+## HTML Fundamentals
+
+**HTML** (HypterText Markup Language) is a *markup* language used to specify the *content* and *structure* of webpages. When we load any webpage from the internet, our browser recieves an HTML file from the server. The browser then renders the webpage based on the content that the HTML file specifies. We can also open these files (ending in `.html`) directly on our computer using a browser.
+
+Below on the left is a sample HTML file. On the right is the website it produces:
+
+<div className="flex flex-row w-full my-6">
+    <div style={{"width": "48%"}}>
+        <Code
+      code={`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hello, world!</h1>
+    <p>Welcome to COMP 426.</p>
+</body>
+</html>`}
+        language="html"
+        filename="index.html"
+        lightTheme="one-light"
+        darkTheme="one-dark"
+        />
+    </div>
+    <div className="rounded-xl border border-border" style={{ "margin-left": "4%", "width": "48%", "height" : "268px", "padding" : "4px"}}>
+        <img src="/images/r01/website-01.png" style={{ "height" : "260px" }}/>
+    </div>
+</div>
+
+HTML documents are made up of **HTML Elements**. Elements are the essential building blocks of our website and specify items such as headings, paragraphs, images, links, and more.
+
+### HTML Tags
+
+Elements are denoted using *tags*. Tags are enclosed in angle brackets (`<` and `>`), and the text between these brackets denotes the element's *type*. There is one opening tag and one closing tag for every element. The closing tag is the same as the opening tag, but with a forward slash (`/`) before the element type. The opening tag denotes the *start* of the element, and the closing tag denotes the *end* of the element. The space between the opening and closing tag represents the *content* of the element.
+
+<img src="/images/r01/p-tag.jpeg" />
+
+The content of elements may include plain text. For example, as shown in the image above, a paragraph's content would include the paragraph's text. HTML elements can also be **nested** within each other - meaning that another HTML element can be used in the content of another element.
+
+For example, the `<strong>` element is used to denote boldfaced text. For example, we can bold the text "world" in the paragraph above like so:
+
+<div className=" my-6">
+<Code
+    code={`<p>Hello, <strong>world</strong>!</p>`}
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+In this example, the `<strong>` element is nested within the `<p>` element. The text "world" is bolded because it is the *content* of the `<strong>` (bold text) element. This nesting of HTML elements is a powerful concept that will allow us to create the many complex designs found in modern webpages.
+
+HTML elements can also be modified and fed extra information with **attributes**. Attributes are additional pieces of information that can be added to an element to change its behavior or appearance. For example in HTML, we use the `<a>` anchor element to create links. The *content* of the `<a>` element is the text that will be displayed as a link, rather than the link itself. To add the destination link for a link element, we can attach the `href` attribute to the `<a>` element:
+
+<div className=" my-6">
+<Code
+    code={`<a href="https://com426-25s.github.io/">Click me!</a>`}
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+This HTML creates the following element: [Click me!](https://com426-25s.github.io/)
+
+Many different types of HTML elements take specific attributes that pertain to their specific purposes. For example, the `<img>` image element takes a `src` attribute that specifies the image's source URL.
+
+<Alert className="mt-6">
+    <AlertTitle className="font-semibold text-base">An Aside:</AlertTitle>
+    <AlertDescription>
+        We can add comments to our HTML code using the the following syntax:
+
+        `<!-- This is a comment -->`.
+
+        You will see these comments throughout many of the following examples as well as in future files and assignments we will work on in this course.
+    </AlertDescription>
+</Alert>
+
+
+### HTML File Structure
+
+HTML files have a specific structure that we must follow in order for the browser to correctly render the webpage.The structure of an HTML file is as follows:
+
+<div className=" my-6">
+<Code
+    code=
+{`<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title (Appears on the tab in the browser)</title>
+        <!-- Additional metadata and links to external resources --> 
+    </head>
+    <body>
+        <!-- All of the website's content goes here. -->
+        <p>Hello, world!</p>
+    </body>
+</html>
+`}
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+**The main parts of an HTML file are:**
+
+1. `<!DOCTYPE html>`: First tag in an HTML file that tells the browser that the document is an HTML5 document.
+2. `<html>`: This element is always the root element of the HTML document. All other elements are nested inside of it.
+3. `<head>`: Contains metadata about the HTML file, such as the website's title and links to external resources (we will discuss this soon).
+4. `<body>`: Contains the content of the webpage that will be displayed to the user. Place all HTML elements to display on the website here.
+
+You can see this run live in the browser! Below is an embed of ***StackBlitz***, a tool that allows us to run websites directly in the browser. We will use StackBlitz for many live demos in the future. You can also *edit the site live* and watch it update in real-time!
+
+*Note: The live preview of this website might only work on Chrome-based browsers. Please consider continuing this reading in Chrome if the preview on the right-hand side does not load!*
+
+<iframe src="https://stackblitz.com/edit/stackblitz-starters-xdjkgrai?embed=1&file=index.html&hideExplorer=1&hideNavigation=1&theme=light" style={{ "width": "100%", "height": "500px", "border": "0", "margin-top" : "12px", "margin-bottom" : "12px" }}></iframe>
+
+### Common HTML Elements
+
+There are numerous HTML elements that are essential for creating webpages. Below is a reference of the most common ones to familiarize yourself with:
+
+| `<tag>` | Description |
+| ---- | -------------- |
+| `<h1>` to `<h6>` | Displays headers with various prominences (sizes), with `<h1>` being the largest header and `<h6`> being the smallest header. |
+| `<p>` | Displays a paragraph of text. |
+| `<div>` | Container that groups elements together in a block. This element is one of the most commonly-used and important for building layouts. |
+| `<span>` | Container that groups elements together in-line. Often used to apply styling to specific text inside of a paragraph without causing any line breaks.|
+| `<em>` | Textual content inside of this element is italicized. |
+| `<strong>` | Textual content inside of this element is bolded. |
+| `<br>` | Creates a line break in a paragraph. |
+| `<a href="url">` | Creates a link to another webpage. |
+| `<img src="url">` | Displays an image from a given url. |
+| `<ul>` | Creates an unordered (bulleted) list. Content inside of this element should be a list of `<li>` elements. |
+| `<ol>` | Creates an ordered (numbered) list. Content inside of this element should be a list of `<li>` elements. |
+| `<li>` | List items to be placed inside of lists (either `<ul>` or `<ol>`). |
+| `<table>` | Used to create tables, in combination with `<tr>` (table row), `<th>` (table header cell), and `<td>` (table data cell) elements. For more information on how to create tables in HTML, check out [this documentation](https://www.w3schools.com/html/html_tables.asp)! |
+
+*To learn more about all of the HTML elements, check out this [official documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) from Mozilla.*
+
+### Multiple HTML Files in a Website
+
+HTML files can link to other HTML files to load different pages on a website. This is done using the `<a>` link element. By convention, we use the `index.html` file for the homepage of a website. This file is loaded when a user navigates to the website's root URL. For example, if a user navigates to `https://example.com/`, the browser will load the `index.html` file and display it to the user.
+
+For example, if we created another HTML file called `about.html`, we could link to it from the `index.html` file like so:
+
+<div className=" my-6">
+<Code
+    code=
+{`<a href="another-page.html">Another page</a>`}
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+The project structure would look like this:
+
+<CodeBlock language="html">
+{`website
+├── index.html
+└── another-page.html
+`}
+</CodeBlock>
+
+<Alert className="mt-6">
+    <AlertTitle className="font-semibold text-base">Note on File Paths:</AlertTitle>
+    <AlertDescription>
+    The `href` attribute uses **relative paths** to link to other files. In this case, the `href` attribute is set to `another-page.html`, which means that the browser will look for the `another-page.html` file in the same directory as the `index.html` file. If we were instead given the following project structure:
+
+    <CodeBlock language="html">
+    {`website
+    ├── index.html
+    └── pages
+        └── another-page.html
+    `}
+    </CodeBlock>
+
+    We would need to update the `href` attribute to look like:
+
+    <div className=" my-6">
+    <Code
+        code=
+    {`<a href="pages/another-page.html">Another page</a>`}
+        language="html"
+        filename="index.html"
+        lightTheme="one-light"
+        darkTheme="one-dark"
+    />
+    </div>
+
+    If were inside of `another-page.html` and wanted to link back to `index.html`, we would use the following `href` attribute:
+
+    <div className=" my-6">
+    <Code
+        code=
+    {`<a href="../index.html">Back to Home</a>`}
+        language="html"
+        filename="another-page.html"
+        lightTheme="one-light"
+        darkTheme="one-dark"
+    />
+    </div>    
+
+    *To learn more about relative vs. absolute paths, click [here](https://linuxhandbook.com/absolute-vs-relative-path/?ref=itsfoss.com).*
+    </AlertDescription>
+</Alert>
+
+## CSS Fundamentals
