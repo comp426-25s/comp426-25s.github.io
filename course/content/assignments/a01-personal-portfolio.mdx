@@ -19,7 +19,7 @@ You should be familiar with:
 
 We also assume that you are up-to-date on all readings and class materials.
 
-Make sur that you have [Visual Studio Code](https://code.visualstudio.com/) installed on your machine. This will be our primary IDE for this course.
+Make sure that you have [Visual Studio Code](https://code.visualstudio.com/) installed on your machine. This will be our primary IDE for this course.
 
 ## Expectations
 
@@ -96,7 +96,7 @@ In this assignment, you will create a personal website that showcases yourself, 
         </tr>
         <tr className="m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-                Your website's HTML includes <em>metatada</em> including the website's <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;title&gt;</code> and connects to a <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">styles.css</code> file.
+                Your website's HTML includes <em>metatada</em> including the website's `<title>` and connects to a `styles.css` file.
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 10
@@ -104,7 +104,7 @@ In this assignment, you will create a personal website that showcases yourself, 
         </tr>
         <tr className="m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-                Your website connects to a <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">styles.css</code> file using the <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;link&gt;</code> tag. To recieve this points, styles must be applied on elements from the CSS file - styles should not be applied inline as attributes in the HTML directly!
+                Your website connects to a `styles.css` file using the `<link>` tag. To recieve this points, styles must be applied on elements from the CSS file - styles should not be applied inline as attributes in the HTML directly!
             </td>
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 10
@@ -132,7 +132,7 @@ In this assignment, you will create a personal website that showcases yourself, 
                 Your website is *visually appealing* and puts in effort including styling with CSS. We recommend trying to have fun with designing here! Create something you would want to show off.
                 <ul>
                     <li>One of the biggest elements to good design involves <strong><em>colors</em></strong>. Finding good matching colors can be hard - but we recommend checking out [this website](https://colorhunt.co) to find a nice color palette! This website also includes <em>hex codes</em> that can be applied. We recommend trying to set your site's background color to a lighter tone in the palette, then use darker colors to style text and other elements. If you have color questions, feel free to ask us in office hours! <strong>Please link your chosen palette in a comment in your CSS file.</strong></li>
-                    <li>Another key element to design is <strong><em>typography</em></strong> - the science of fonts! [Google Fonts](https://fonts.google.com/knowledge) is a terrific resource for both learning about fonts in general (and how to apply different types of fonts where) and finding great fonts to use. On the "Fonts" tab of the site, each font is associated with instructions on how to import this font so you can use it in your website. Press on a font, then "Get font", then "Get embed code". This should provide you with <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">&lt;link&gt;</code> tags and CSS classes will allow you to use custom fonts in your project.</li>
+                    <li>Another key element to design is <strong><em>typography</em></strong> - the science of fonts! [Google Fonts](https://fonts.google.com/knowledge) is a terrific resource for both learning about fonts in general (and how to apply different types of fonts where) and finding great fonts to use. On the "Fonts" tab of the site, each font is associated with instructions on how to import this font so you can use it in your website. Press on a font, then "Get font", then "Get embed code". This should provide you with `<link>` tags and CSS classes will allow you to use custom fonts in your project.</li>
                 </ul>
 
                 We will have an entire module on design later in the course, where we will dive deeper into colors and typography. For now, feel free to experiment - and ask questions!
@@ -218,13 +218,18 @@ To get started on this assignment, please complete the following steps:
 </div>
 3. Open the cloned repository in Visual Studio Code.
 4. Create a new HTML file called `index.html` in the root directory of your repository. This will be the main page of your website. You will want to follow the same standard template used in class, which might look something like the following:
-```html
-<!DOCTYPE html>
+
+<div className="!ml-4">
+<CodeBlock language="html">
+{`<!DOCTYPE html>
 <html>
     <head></head>
     <body></body>
-</html>
-```
+</html>`}
+</CodeBlock>
+</div>
+
+
 5. Using the rubric items listed above in the **Expectations** section, begin creating the website and adding styling.
 
 ## Deployment

@@ -2,6 +2,8 @@ import type { MDXComponents } from 'mdx/types'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ScrollText, TriangleAlert, Youtube, Presentation } from 'lucide-react';
 import { Button } from "@/components/ui/button"
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import CodeBlock from './components/widgets/codeblock';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -36,7 +38,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </a>
     ),
     code: ({ children }) => (
-        <code className="bg-slate-200 text-[#e06666] p-1 rounded-md text-sm">
+        <code className="bg-[#FAFAFA] !text-pink-600 p-1 rounded-md text-sm">
             { children }
         </code>
     ),
@@ -80,6 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Youtube,
     Presentation,
     Button,
+    CodeBlock,
     ...components,
   }
 }

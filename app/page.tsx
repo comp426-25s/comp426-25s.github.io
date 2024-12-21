@@ -16,10 +16,6 @@ export default function Home() {
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl">
         COMP 426: Modern Web Programming
       </h1>
-
-      <blockquote className="mt-6 border-l-2 pl-6 text-slate-500">
-        Spring 2025 Section of COMP 426 at UNC-Chapel Hill.
-      </blockquote>
           
       <p className="leading-7 mt-4 text-base">
         👋 <strong>Hello students, welcome to COMP 426!</strong>
@@ -27,6 +23,7 @@ export default function Home() {
       <p className="leading-7  mt-4 text-base">
       This special, pilot section of COMP 426 introduces students to the fundamentals modern, full-stack web development with an emphasis on today’s best practices, modern tooling, and leading industry-prevalent frameworks.
       </p>
+
       <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
         Important Links
       </h2>
@@ -60,7 +57,7 @@ export default function Home() {
           </Button>
           {/* Office Hours button */}
           <Button variant="ghost" className="w-full h-10 pl-2 pr-2">
-            <Link href="/extra-resources" className='flex flex-row items-center w-full !font-medium  h-6'>
+            <Link href="/office-hours" className='flex flex-row items-center w-full !font-medium  h-6'>
               <Clock className="h-5 w-5 stroke-violet-500" />
               <span className="ml-2  font-semibold">Office Hours</span>
             </Link>

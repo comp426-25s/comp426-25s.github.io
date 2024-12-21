@@ -74,8 +74,12 @@ body {
   }
   
   .link-style {
-    color: blue !important;
+    color: #4698bc !important;
+  }
+
+  .link-style:hover {
     text-decoration: underline !important;
+    cursor: pointer;
   }
 
   * {
