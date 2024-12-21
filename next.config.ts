@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
   },
   webpack: (config, options) => {
     config.module.rules.push({
-      test: /\.ya?ml$/,
+      test: /\.yaml$/,
       use: 'yaml-loader',
     });
     return config;
