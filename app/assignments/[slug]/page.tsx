@@ -16,3 +16,14 @@ export default async function DynamicMdxPage({ params }: { params: { slug: strin
     }} />
   )
 }
+
+export async function generateStaticParams() {
+  const files = await fs.readdir(path.join(process.cwd(), 'course/content/assignments'));
+  return files.map(file => {
+    return {
+      params: {
+        slug: file.replace('.mdx', '')
+      }
+    }
+  });
+}
