@@ -1,7 +1,6 @@
-import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
   output: "export",
   images: {
