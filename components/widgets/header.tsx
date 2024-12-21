@@ -24,7 +24,7 @@ export default function Header() {
                     <BreadcrumbLink href="/">COMP 426</BreadcrumbLink>
                 </BreadcrumbItem>
                 {pathComponents.length > 0 && pathComponents.map((component, index) => {
-                    const componentTitle = component.replace("-", " ");
+                    const componentTitle = component.replaceAll("-", " ");
                     return (
                         <React.Fragment key={index} >
                         <BreadcrumbSeparator />

@@ -3,10 +3,10 @@
 - code: R00
   due: Fri Jan 10 @ 11:59PM
   title: Syllabus and Pre-Survey
-  url: string | null
+  url: syllabus
   
 - code: A01
   due: Sun Jan 19 @ 11:59PM
   title: Personal Portfolio
-  url: string | null
+  url: assignments/a01-personal-portfolio
 
