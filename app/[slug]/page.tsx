@@ -5,6 +5,16 @@ import path from 'path';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 
+export async function generateStaticParams() {
+  const files = await fs.readdir(path.join(process.cwd(), 'course/content'));
+  return files
+    .filter(file => file !== 'assignments' && file !== 'readings')
+    .map(file => {
+      return {
+        slug: file.replace('.mdx', '')
+      }
+    });
+}
 
 export default async function DynamicMdxPage({ params }: { params: { slug: string }}) {
   const content = await fs.readFile(path.join(process.cwd(), 'course/content', `${params.slug}.mdx`));
@@ -16,15 +26,4 @@ export default async function DynamicMdxPage({ params }: { params: { slug: strin
       }
     }} />
   )
-}
-
-export async function generateStaticParams() {
-  const files = await fs.readdir(path.join(process.cwd(), 'course/content'));
-  return files.map(file => {
-    return {
-      params: {
-        slug: file.replace('.mdx', '')
-      }
-    }
-  });
 }

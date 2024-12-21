@@ -3,7 +3,7 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "standalone",
+  output: "export",
   images: {
     unoptimized: true,
   },

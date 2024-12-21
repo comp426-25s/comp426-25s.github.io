@@ -5,7 +5,16 @@ import path from 'path';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 
-export default async function DynamicMdxPage({ params }: { params: { slug: string }}) {
+export async function generateStaticParams() {
+  const files = await fs.readdir(path.join(process.cwd(), 'course/content/assignments'));
+  return files.map(file => {
+    return {
+      slug: file.replace('.mdx', '')
+    }
+  });
+}
+
+export default async function AssignmentsPage({ params }: { params: { slug: string }}) {
   const content = await fs.readFile(path.join(process.cwd(), 'course/content/assignments', `${params.slug}.mdx`));
   return (
     <MDXRemote source={content} components={useMDXComponents({})} options={{
@@ -15,15 +24,4 @@ export default async function DynamicMdxPage({ params }: { params: { slug: strin
       }
     }} />
   )
-}
-
-export async function generateStaticParams() {
-  const files = await fs.readdir(path.join(process.cwd(), 'course/content/assignments'));
-  return files.map(file => {
-    return {
-      params: {
-        slug: file.replace('.mdx', '')
-      }
-    }
-  });
 }
