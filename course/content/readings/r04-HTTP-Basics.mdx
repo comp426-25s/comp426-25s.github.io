@@ -1,0 +1,202 @@
+# R04: HTTP and APIs
+
+> Written by <span className="font-semibold">Ajay Gandecha</span> for <em>COMP 426: Modern Web Programming</em>.
+
+## Introduction
+
+In the first lecture of COMP 426, we discussed the basics of the internet and how computers talk to each other. You learned about **servers**, which are computers who primary job is to provide *resources* to other devices on the network. Computers (called *clients*) can then request resources from those servers, and servers respond with the requested resources. This basic model of server-client interaction serves as the foundation of the internet.
+
+<img src="/images/r04/client-server.png" />
+
+So far, we have thought of resources the server holds (and that the client can request) as *files* that enable the client to view a webpage, such as HTML, CSS, and JavaScript files. However, resources include far more than just these three types of files. Crucially, the client can also request ***data*** from the server, enabling data to be transferred between computers via the internet. Websites can also request data from servers themselves, which allows them to request and display information from an external source.
+
+For example, when you load a weather website in your browser, the website does **not** load the weather data for *every town in the world* at once. Instead, when a user types in a specific city / town into the weather website, the site *requests the weather data for that city* from a server that serves weather data. The server then responds with the requested weather data, which the website displays to the user.
+
+This process of requesting and receiving data from a server conforms to what is known as the **Hypertext Transfer Protocol (HTTP)**. Protocols are a set of rules that specify the format for how clients and servers can communicate with each other. When a client wants to request a resource from a server, it sends an **HTTP request** to the server. The server then responds with an **HTTP response**, which contains the requested resource.
+
+## HTTP Requests
+
+When a client wants to request a resource from a server, it sends an HTTP request to the server. HTTP specifies that this request should contain the following information:
+
+1. **Method**: The method specifies the *type of request* the client is making. Clients can make requests to perform different tasks on the server - not just retrieving data. Remember, HTTP is the primary way that the client and server can interact! There are cases where instead of retrieving data, the client wants to *add* new data to the server, *modify* existing data on the server, or *delete* data on the server. The commonly used example is with a to-do list. The user may want to view their to-do list stored on a server, but the user might also want to add a new item, check off an existing item, or remove an item entirely. To support these different types of *actions* that the client might want to perform on the server, HTTP defines different methods that the client can use in its request. This allows the server to know what the client wants to do with the resource. The most common methods are:
+   - `GET`: Requests data from the server.
+   - `POST`: Sends data to the server.
+   - `PUT`: Updates data on the server.
+   - `DELETE`: Deletes data on the server.
+2. **URL**: The URL specifies the location of the resource the client wants to access on a server. This allows the server to diffrentiate between different resources sitting on the server that the client might want to access. For example, if a server stores both weather data and user to-do lists, the URL in the request will specify which resource the client wants to access (for example, `/weather` or `/todos`).
+3. **Headers**: Headers contain additional information about the request, such as the type of data the client can accept, the type of data the client is sending, and more. *Note: You do not need to know the specifics of this section!*
+4. **Body**: The body contains the data the client is sending to the server. This is important if the user is trying to send data to the server along with a request. This is common with `POST` requests, where the client wants to add new data to the server. The server cannot store new data if the client has no way to send this data to the server! This is also common with `PUT`, where the client wants to update existing data on the server. The client can send the modified version of the data in the body of the request, and the server can update the data accordingly.
+
+This data is formatted like so:
+
+<div className="my-6">
+<Code
+    code=
+{`METHOD url
+headers here...
+( empty line )
+body, if applicable.
+`}
+
+    language="http"
+    filename="Basic Request Template"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Below are two sample HTTP requests - one to GET fun facts about dogs, the other to POST (create) memes for a meme contest.
+
+<div className=" my-6">
+<CodeComparison
+    beforeCode=
+{`GET /dogs/funfacts
+Host: example.com
+Accept: application/json
+`}
+    afterCode={`POST /memes
+Host: example.com
+Accept: application/json
+
+{
+    "meme": "This is a meme!",
+    "url": "https://memes.com/meme.jpg"
+}
+`}
+    languageOne="txt"
+    languageTwo="txt"
+    filenameOne="GET Request"
+    filenameTwo="POST Request"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Notice that only the `POST` request has a body, as the client is sending data to the server! The `GET` request does not have a body since the client is only requesting data from the server. 
+
+<Alert className="my-6">
+    <AlertTitle className="font-semibold text-base">Making Requests from Code</AlertTitle>
+    <AlertDescription>
+        You probably noticed that this format seems quite tedious to manually write out by hand - it is! In most programming languages, there are libraries that can help you make HTTP requests to servers very easily without having to manually write out the request. In TypeScript / JavaScript, for example, you can use the `fetch` function to make HTTP requests, like so:
+
+        <div className="my-6">
+        <Code
+            code=
+        {`// This code makes a GET request.
+fetch('https://example.com/dogs/funfacts')
+    .then(fetchedData => console.log(fetchedData));
+        `}
+            language="ts"
+            filename="Fetching Data in TypeScript"
+            lightTheme="one-light"
+            darkTheme="one-dark"
+        />
+        </div>
+
+
+        You will ***almost always*** use one of these built-in libraries to make HTTP requests in your code, rather than manually writing out the request yourself. This is much easier and less error-prone than doing it manually - but, it is a good idea to have a conceptual understanding of what constitutes an HTTP request - especially HTTP methods!
+    </AlertDescription>
+</Alert>
+
+Notice the body of the `POST` request looked like so:
+
+<div className="my-6">
+<Code
+    code=
+{`{
+    "meme": "This is a meme!",
+    "url": "https://memes.com/meme.jpg"
+}`}
+
+    language="json"
+    filename="POST Request Body"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+This data is written in a format known as **JSON** (JavaScript Object Notation). JSON is a data format that directly mimics JavaScript objects. JSON can be converted to JavaScript / TypeScript objects and vice versa (remember *structural typing* from RD02), which makes it an extremely popular format for sending data between clients and servers. This is the format used to both send and receive data in HTTP requests and responses.
+
+## HTTP Responses
+
+We first talked about HTTP requests, which is first step in the client-server communication. The second step is the server's response to the client's request, formatted as an HTTP response.
+
+The server's response is also written in a specific format that is specified by HTTP. These responses contain the following information.
+
+1. **Status Code**: The status code is a number that indicates the ***result*** of the client's request. These codes are three digit numbers that are grouped into categories based on their first digit, and each of these "classes" of codes have their own meaning. For example:
+   - `200-299`: The request was successful, and the operation that the client asked for was completed successfully.
+   - `300-399`: This response code often indicates a redirection or that the client needs to take additional steps to complete the request.
+   - `400-499`: The *client* made a mistake in the request, and the server could not process the request. The most common example of this is when the client requests a resource that does not exist on the server, resulting in the famous `404 - Not found` error!
+   - `500+`: The server - not the client - errored out when processing the request. This is often due to a bug in the server code.
+   You can learn more about the different HTTP response codes [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses)!
+2. **Headers**: Like with HTTP requests, headers in the response contain additional information about the response, such as the type of data the server is sending, the length of the data, and more. *Note: You do not need to know the specifics of this section!*
+3. **Body**: The body contains the data the server is sending to the client. *This is the data the client requested from the server!* For example, if the client requested weather data for a specific city, the weather data for that city would be found in the body of the server's HTTP response.
+
+This data is formatted like so:
+
+<div className="my-6">
+<Code
+    code=
+{`status code here
+headers here...
+( empty line )
+body, if applicable.
+`}
+
+    language="http"
+    filename="Basic Response Template"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Below are two sample HTTP responses - one with a status code of `200` (indicating success) and the other with a status code of `404` (indicating the resource was not found).
+
+<div className=" my-6">
+<CodeComparison
+    beforeCode=
+{`200 OK
+Content-Type: application/json
+
+{
+    "fun_fact": "Dogs can smell
+        100,000 times better
+        than humans!"
+}
+`}
+    afterCode={`404 Not Found
+Content-Type: application/json
+    
+{
+    "error": "The requested
+        resource was not found."
+}
+`}
+    languageOne="txt"
+    languageTwo="txt"
+    filenameOne="200 OK Response"
+    filenameTwo="404 Not Found Response"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Again, like with making requests, the same HTTP libraries that help you make requests also help you handle responses! These are often built into programming languages. This is the same example from above:
+
+        <div className="my-6">
+        <Code
+            code=
+        {`fetch('https://example.com/dogs/funfacts') // Making the request
+    .then(fetchedData => console.log(fetchedData)); // Handling the response!`}
+            language="ts"
+            filename="Fetching Data in TypeScript"
+            lightTheme="one-light"
+            darkTheme="one-dark"
+        />
+        </div>
+
+This code technically uses ***asynchrony***. This is because the server might take a while to respond to the client's request, and the client cannot "freeze" and wait for the server to respond before continuing to execute code. We will talk about this in detail in class soon - and was the primary motivation behind assigning this reading!
+
+## Conclusion
+
+HTTP powers how applications communicate with servers on the internet. Servers run their own code to handle these HTTP requests from clients and send back responses. These are called **APIs**, and you will use APIs to access external data from our web apps extensively, both in this course and beyond! For now, this should get you thinking about how web applications retrieve / load data and how these applications do not exist in a vacuum - they talk to the internet to get, send, and update data!
