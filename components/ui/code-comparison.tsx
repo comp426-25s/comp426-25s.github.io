@@ -8,19 +8,25 @@ import { codeToHtml } from "shiki";
 interface CodeComparisonProps {
   beforeCode: string;
   afterCode: string;
-  language: string;
-  filename: string;
+  languageOne: string;
+  languageTwo: string;
+  filenameOne: string;
+  filenameTwo: string;
   lightTheme: string;
   darkTheme: string;
+  vsText?: string;
 }
 
 export default function CodeComparison({
   beforeCode,
   afterCode,
-  language,
-  filename,
+  languageOne,
+  languageTwo,
+  filenameOne,
+  filenameTwo,
   lightTheme,
   darkTheme,
+  vsText
 }: CodeComparisonProps) {
   const { theme, systemTheme } = useTheme();
   const [highlightedBefore, setHighlightedBefore] = useState("");
@@ -32,11 +38,11 @@ export default function CodeComparison({
 
     async function highlightCode() {
       const before = await codeToHtml(beforeCode, {
-        lang: language,
+        lang: languageOne,
         theme: selectedTheme,
       });
       const after = await codeToHtml(afterCode, {
-        lang: language,
+        lang: languageTwo,
         theme: selectedTheme,
       });
       setHighlightedBefore(before);
@@ -49,7 +55,8 @@ export default function CodeComparison({
     systemTheme,
     beforeCode,
     afterCode,
-    language,
+    languageOne,
+    languageTwo,
     lightTheme,
     darkTheme,
   ]);
@@ -77,7 +84,7 @@ export default function CodeComparison({
           <div>
             <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
-              {filename}
+              {filenameOne}
               {/* <span className="ml-auto">before</span> */}
             </div>
             {renderCode(beforeCode, highlightedBefore)}
@@ -85,15 +92,17 @@ export default function CodeComparison({
           <div>
             <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
-              {filename}
+              {filenameTwo}
               {/* <span className="ml-auto">after</span> */}
             </div>
             {renderCode(afterCode, highlightedAfter)}
           </div>
         </div>
-        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-accent text-xs text-foreground">
-          VS
-        </div>
+        { vsText && (
+          <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-accent text-xs text-foreground">
+            {vsText}
+          </div>
+        )}
       </div>
     </div>
   );

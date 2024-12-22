@@ -10,6 +10,16 @@ import {
 
 ## Introduction
 
+COMP 426: Modern Web Programming will focus on creating **websites** and **web applications**. We will use a lot of advanced tools throughout the course - but the most fundamental tools of web development are **HTML** and **CSS**.
+
+The files that make up websites are stored on *servers* - computers on the internet that store large amounts of files and "serves" them to users who request them. When you navigate to a website, say the course website (`https://comp426-25s.github.io/`), your browser sends a request across the internet to the server that stores the website's files. The server then sends the files to the browser, which renders the website for you to see. The files that the server sends back to the browser have specific jobs.
+
+Think about any website you visit on the internet. We can break every website into three fundamental parts:
+1. **Content**: All webpages have content - this includes text, images, links, etc. that you see on the website.
+2. **Style**: The style of a website is how the content is presented to the user. This includes the colors, fonts, spacing, and layout of the content. Multiple webpages may share the exact  same content, but can be styled differently.
+3. **Behavior**: The behavior of a website is how the website responds to user interactions. This includes animations, forms, and other complex logic such as logging in, storing / manipulating data, and more.
+
+The different files that the browser receives from the server provide these three fundamental parts of the website - *content*, *style*, and *behavior*. The *content* of a website is defined using HTML (`.html`) files. The *style* of a website is defined using CSS (`.css`) files. The *behavior* of a website is defined using JavaScript (`.js`) files. In this reading, we will focus on the first two parts - HTML and CSS.
 
 ## HTML Fundamentals
 
@@ -224,3 +234,142 @@ The project structure would look like this:
 </Alert>
 
 ## CSS Fundamentals
+
+As you noticed through reading above and also playing around with HTML, the content of the webpage is very bare-bones. HTML provides us with the *skeleton* of a webpage, but it does not provide us with the tools to style the webpage. This is where *CSS* comes in.
+
+**CSS** (Cascading Style Sheets) is a language used to specify the *style* and *layout* of webpages. CSS is used to control the appearance of HTML elements on a webpage, such as the color, size, and position of text and images. When we combine HTML and CSS, we unlock the ability to create rich, aesthetically pleasing websites that resembles the modern webpages we see on the internet today.
+
+CSS files are denoted with the `.css` file extension and are separate files from the HTML files. We are able to use the `<style>` tag in the `<head>` section of our HTML files and write CSS there, however since our CSS files can be long and include a lot of styling, it is best practice to separate the CSS into its own file. We can then link the CSS file to the HTML file using the `<link>` tag in the `<head>` section of the HTML file like so:
+
+<div className=" my-6">
+<Code
+    code=
+{`<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <!-- This element links the CSS file to the HTML file. -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <!-- The webpage's content is now styled using the styles.css file. -->
+        <p>Hello, world!</p>
+    </body>
+`}
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Typically, styles are placed in the `styles.css` file. Here is an example file directory of a project, building on the one from the previous section:
+
+<CodeBlock language="html">
+{`website
+├── index.html
+└── another-page.html
+└── styles.css
+`}
+</CodeBlock>
+
+### CSS Rules and Selectors
+
+CSS files contain styling "rules" / rulesets that describe how certain HTML elements should be styled. Rules consist of two main parts:
+1. **Selector** - The selector specifies which HTML elements the style should apply to.
+2. **Style Rules** - Following the selector, surrounded by `{ }`, are the style rules that specify how the selected elements should be styled. Style rules consist of a style property and a value, separated by a colon.
+
+<img src="/images/r01/css-rule.jpeg" />
+
+We can place an entire HTML element as a selector, like we have above with the `h1` element. With this styling rule, ***all*** `h1` elements on the webpage will be styled according to the styling rules.
+
+There are many cases where we want to style only specific elements on the webpage. We can do this by using special **class** and **id** selectors.
+
+We discussed certain HTML elements using *attributes* to provide extra information to the element. For example, we used `href` with `<a>` elements to supply a link's destination URL, or `src` with `<img>` elements to supply an image's source URL.
+
+There are two selectors which can be applied to ***all*** HTML elements - `class` and `id`.
+
+The `class` attribute is used to apply a class to an HTML element. Classes are used to group elements together. For example:
+
+<div className=" my-6">
+<Code
+    code=
+{`<p class="my-class">Sample element!<p>
+<p class="my-class">Another one!<p>
+<p>This paragraph is not part of the class.</p>
+<h2 class="my-class">Multiple types of elements can be in one class.<h2>
+`}
+
+    language="html"
+    filename="index.html"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+We then can select all elements that *share the same class* using a the `.class` CSS selector. 
+
+<div className=" my-6">
+<CodeComparison
+    beforeCode=
+{`<p class="my-class">Sample element!<p>
+<p class="my-class">Another one!<p>
+<p>
+    This paragraph is not
+    part of the class.
+</p>
+<h2 class="my-class">
+    Multiple types of elements
+    can be in one class.
+<h2>
+`}
+    afterCode={`/* Styles all p elements */
+p {
+    text-align: center;    
+}
+
+/* Styles all elements with the
+class 'my-class' */
+.my-class {
+    color: blue;    
+}`}
+    languageOne="html"
+    languageTwo="css"
+    filenameOne="index.html"
+    filenameTwo="styles.css"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+We can also use the `id` attribute to attach a *unique identifier* to HTML elements. This allows us to style individual elements. We can select elements with a specific `id` using the `#id` CSS selector.
+
+<div className=" my-6">
+<CodeComparison
+    beforeCode=
+{`<p>Sample element!<p>
+<p id="another">Another one!<p>
+`}
+    afterCode={`/* Styles just the second
+paragraph element. */
+#another {
+    color: blue;    
+}`}
+    languageOne="html"
+    languageTwo="css"
+    filenameOne="index.html"
+    filenameTwo="styles.css"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+### CSS Styles
+
+There are hundreds of different types of CSS styles that can be applied. I recommend checking out [this resource](https://www.w3schools.com/cssref/index.php) to learn more! We will specifically talk about layout-centric styles in lecture.
+
+The basics of CSS are super easy to learn, but since CSS contains a large depth of styling options, it can take time to master. Throughout this course, if you have questions about how to achieve a specific style, we highly recommend checking documentation online or stopping by to office hours - we would love to help!
+
+## Wrapping up
+
+In this reading, you learned about the basics of HTML and CSS - two of the most fundamental tools used for building websites! Make sure to answer the associated questions for this reading in GradeScope. Please see us in office hours if you have any questions!
