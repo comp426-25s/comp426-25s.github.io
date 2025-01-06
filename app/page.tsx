@@ -49,7 +49,7 @@ export default function Home() {
         {/* Right column */}
         <div className="flex flex-col w-1/2">
           {/* Team 426 button */}
-          <Button variant="ghost" className="mt-2 w-full h-10 pl-2 pr-2">
+          <Button variant="ghost" className="sm:mt-2 w-full h-10 pl-2 pr-2">
             <Link href="/team-426" className='flex flex-row items-center w-full !font-medium  h-6'>
               <Users className="h-5 w-5 stroke-green-700" />
               <span className="ml-2  font-semibold">Team 426</span>

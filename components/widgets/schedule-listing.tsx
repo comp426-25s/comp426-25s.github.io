@@ -20,8 +20,8 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
             </div>
             {/* Buttons Section */}
             <div className="flex flex-col sm:flex-row items-end sm:items-center ml-auto">
-                { props.item.youtubeUrl && <Button variant="ghost" className='pt-1 pb-0 h-6'><Link href={props.item.youtubeUrl}>Recording</Link></Button> }
-                { props.item.slidesUrl && <Button variant="ghost" className='pt-2 pb-0 h-6'><Link href={props.item.slidesUrl}>Slides</Link></Button> }
+                { props.item.youtubeUrl && <Button variant="ghost" className='pt-1 sm:pt-0 pb-0 h-6'><Link href={props.item.youtubeUrl}>Recording</Link></Button> }
+                { props.item.slidesUrl && <Button variant="ghost" className='pt-2 sm:pt-0 pb-0 h-6'><Link href={props.item.slidesUrl}>Slides</Link></Button> }
             </div>
         </div>
     );
