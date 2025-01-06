@@ -34,7 +34,7 @@ export default function RootLayout({
 
           {/* Content */}
           <div className="flex justify-center w-full">
-            <div className="flex-col w-[708px] mt-16">
+            <div className="flex-col w-10/12 md:w-[708px] mt-16">
               {children}
             </div>
           </div>

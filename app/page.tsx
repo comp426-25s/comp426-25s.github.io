@@ -28,7 +28,7 @@ export default function Home() {
         Important Links
       </h2>
 
-      <div className="flex flex-row w-full">
+      <div className="flex flex-col sm:flex-row w-full">
         {/* Left column */}
         <div className="flex flex-col w-1/2">
           {/* Syllabus button */}

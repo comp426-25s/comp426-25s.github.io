@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 export default function AssignmentListing(props: {item: AssignmentItem}) {
     return (
-        <Button variant="ghost" className="flex flex-row w-full items-center">
-            <Link href={props.item.url ?? ''} className="flex flex-row w-full items-center">
+        <Button variant="ghost" className="flex flex-row w-full items-center h-16 sm:h-9">
+            <Link href={props.item.url ?? ''} className="flex flex-col sm:flex-row w-full items-start sm:items-center">
                 {/* Identity Section */}
                 <div className="flex flex-row items-center">
                     
@@ -20,7 +20,7 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                         </div>
                     )}
                     
-                    <p className="font-semibold ml-3">{ props.item.title }</p>
+                    <p className="font-semibold ml-3 text-ellipsis min-w-0 overflow-hidden whitespace-nowrap">{ props.item.title }</p>
                     {/* Date Section
                     <div className="flex flex-row w-[110px]">
                         <p className="text-sm">{ props.item.date }</p>
@@ -29,7 +29,7 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                     <p className="font-semibold ml-2">{ props.item.title }</p> */}
                 </div>
                 {/* Buttons Section */}
-                <div className="flex flex-row items-center ml-auto">
+                <div className="flex flex-row sm:items-center ml-12 sm:ml-auto">
                     <p className="text-sm">Due: {props.item.due}</p>
                 </div>
             </Link>
