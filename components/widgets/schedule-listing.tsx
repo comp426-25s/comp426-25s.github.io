@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function ScheduleListing(props: {item: ScheduleItem}) {
     return (
-        <div className="flex flex-col sm:flex-row w-full sm:items-center">
+        <div className="flex flex-row w-full sm:items-center">
             {/* Identity Section */}
             <div className="flex flex-col sm:flex-row sm:items-center">
                 {/* Date Section */}
@@ -19,9 +19,9 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
                 <p className="font-semibold mt-2 sm:mt-0 sm:ml-3 text-[14px]">{ props.item.title }</p>
             </div>
             {/* Buttons Section */}
-            <div className="flex flex-row sm:items-center sm:ml-auto">
-                { props.item.youtubeUrl && <Button variant="ghost"><Link href={props.item.youtubeUrl}>Recording</Link></Button> }
-                { props.item.slidesUrl && <Button variant="ghost"><Link href={props.item.slidesUrl}>Slides</Link></Button> }
+            <div className="flex flex-col sm:flex-row items-end sm:items-center ml-auto">
+                { props.item.youtubeUrl && <Button variant="ghost" className='pt-1 pb-0 h-6'><Link href={props.item.youtubeUrl}>Recording</Link></Button> }
+                { props.item.slidesUrl && <Button variant="ghost" className='pt-2 pb-0 h-6'><Link href={props.item.slidesUrl}>Slides</Link></Button> }
             </div>
         </div>
     );
