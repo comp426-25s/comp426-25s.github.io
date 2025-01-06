@@ -11,11 +11,11 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                 <div className="flex flex-row items-center">
                     
                     {props.item.code.startsWith("R") ? (
-                        <div className=' bg-[#DEECDC] pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
+                        <div className=' bg-[#DEECDC] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
                             <p className="text-[#374A3D] text-sm">{ props.item.code }</p>
                         </div>
                     ) : (
-                        <div className=' bg-[#F1E1E9] pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
+                        <div className=' bg-[#F1E1E9] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
                             <p className="text-[#4F2E3E] text-sm">{ props.item.code }</p>
                         </div>
                     )}
