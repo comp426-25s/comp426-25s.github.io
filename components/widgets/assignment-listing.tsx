@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function AssignmentListing(props: {item: AssignmentItem}) {
     return (
-        <Button variant="ghost" className="flex flex-row w-full items-center h-16 sm:h-9">
+        <Button variant="ghost" className="flex flex-row w-full items-center h-16 pl-0 sm:h-9">
             <Link href={props.item.url ?? ''} className="flex flex-col sm:flex-row w-full items-start sm:items-center">
                 {/* Identity Section */}
                 <div className="flex flex-row items-center">
