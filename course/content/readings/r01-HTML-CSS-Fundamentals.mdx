@@ -23,7 +23,7 @@ The different files that the browser receives from the server provide these thre
 
 ## HTML Fundamentals
 
-**HTML** (HypterText Markup Language) is a *markup* language used to specify the *content* and *structure* of webpages. When we load any webpage from the internet, our browser recieves an HTML file from the server. The browser then renders the webpage based on the content that the HTML file specifies. We can also open these files (ending in `.html`) directly on our computer using a browser.
+**HTML** (HyperText Markup Language) is a *markup* language used to specify the *content* and *structure* of webpages. When we load any webpage from the internet, our browser recieves an HTML file from the server. The browser then renders the webpage based on the content that the HTML file specifies. We can also open these files (ending in `.html`) directly on our computer using a browser.
 
 Below on the left is a sample HTML file. On the right is the website it produces:
 
@@ -75,7 +75,7 @@ For example, the `<strong>` element is used to denote boldfaced text. For exampl
 
 In this example, the `<strong>` element is nested within the `<p>` element. The text "world" is bolded because it is the *content* of the `<strong>` (bold text) element. This nesting of HTML elements is a powerful concept that will allow us to create the many complex designs found in modern webpages.
 
-HTML elements can also be modified and fed extra information with **attributes**. Attributes are additional pieces of information that can be added to an element to change its behavior or appearance. For example in HTML, we use the `<a>` anchor element to create links. The *content* of the `<a>` element is the text that will be displayed as a link, rather than the link itself. To add the destination link for a link element, we can attach the `href` attribute to the `<a>` element:
+HTML elements can also be modified with **attributes**. Attributes provide extra information to change an element's behavior or appearance. For example in HTML, we use the `<a>` anchor element to create links. The *content* of the `<a>` element is the text that will be displayed as a link, rather than the link itself. To add the destination link for a link element, we can attach the `href` attribute to the `<a>` element:
 
 <div className=" my-6">
 <Code
@@ -94,7 +94,7 @@ Many different types of HTML elements take specific attributes that pertain to t
 <Alert className="mt-6">
     <AlertTitle className="font-semibold text-base">An Aside:</AlertTitle>
     <AlertDescription>
-        We can add comments to our HTML code using the the following syntax:
+        We can add comments to our HTML code using the following syntax:
 
         `<!-- This is a comment -->`.
 
@@ -294,10 +294,10 @@ The `class` attribute is used to apply a class to an HTML element. Classes are u
 <div className=" my-6">
 <Code
     code=
-{`<p class="my-class">Sample element!<p>
-<p class="my-class">Another one!<p>
+{`<p class="my-class">Sample element!</p>
+<p class="my-class">Another one!</p>
 <p>This paragraph is not part of the class.</p>
-<h2 class="my-class">Multiple types of elements can be in one class.<h2>
+<h2 class="my-class">Multiple types of elements can be in one class.</h2>
 `}
 
     language="html"
@@ -348,7 +348,7 @@ We can also use the `id` attribute to attach a *unique identifier* to HTML eleme
 <CodeComparison
     beforeCode=
 {`<p>Sample element!<p>
-<p id="another">Another one!<p>
+<p id="another">Another one!</p>
 `}
     afterCode={`/* Styles just the second
 paragraph element. */
