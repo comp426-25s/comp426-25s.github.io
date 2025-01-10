@@ -6,9 +6,14 @@
   url: syllabus
 
 - code: R01
-  due: Tue Jan 14 @ 11:59PM
+  due: Sun Jan 12 @ 11:59PM
   title: HTML and CSS Fundamentals
   url: readings/r01-HTML-CSS-Fundamentals
+
+- code: R02
+  due: Tue Jan 14 @ 11:59PM
+  title: TypeScript 101
+  url: readings/r02-TypeScript-for-Java-Developer
 
   
 # - code: A01
