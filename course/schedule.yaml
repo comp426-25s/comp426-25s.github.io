@@ -1,15 +1,15 @@
 # Contains the course schedule.
 
-# - code: L01
-#   date: Wed Jan 10
-#   title: HTML Fundamentals
-#   synopsis: null
-#   youtubeUrl: null
-#   slidesUrl: null
+- code: L02
+  date: Wed Jan 10
+  title: HTML and CSS
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
 
-- code: L00
+- code: L01
   date: Wed Jan 8
   title: Welcome to COMP 426!
   synopsis: null
-  youtubeUrl: null
+  youtubeUrl: https://youtu.be/waWglA2l_po
   slidesUrl: https://docs.google.com/presentation/d/1-EAMU-EGuJqkLq6E_6Lf1wpivchuCD1gqbQkCG5VtNs/edit?usp=sharing
