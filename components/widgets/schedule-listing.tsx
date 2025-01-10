@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function ScheduleListing(props: {item: ScheduleItem}) {
     return (
-        <div className="flex flex-row w-full sm:items-center">
+        <div className="flex flex-row w-full sm:items-center mb-3">
             {/* Identity Section */}
             <div className="flex flex-col sm:flex-row sm:items-center">
                 {/* Date Section */}
