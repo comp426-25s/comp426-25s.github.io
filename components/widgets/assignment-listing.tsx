@@ -20,7 +20,7 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                         </div>
                     )}
                     
-                    <p className="font-semibold ml-3 text-ellipsis min-w-0 overflow-hidden whitespace-nowrap">{ props.item.title }</p>
+                    <p className={`font-semibold ml-3 text-ellipsis min-w-0 overflow-hidden whitespace-nowrap ${props.item.past && " text-pink-600 line-through"}`}>{ props.item.title }</p>
                     {/* Date Section
                     <div className="flex flex-row w-[110px]">
                         <p className="text-sm">{ props.item.date }</p>
@@ -30,7 +30,7 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                 </div>
                 {/* Buttons Section */}
                 <div className="flex flex-row sm:items-center ml-12 sm:ml-auto">
-                    <p className="text-sm">Due: {props.item.due}</p>
+                    <p className={`text-sm ${props.item.past && " text-pink-600 line-through"}`}>Due: {props.item.due}</p>
                 </div>
             </Link>
         </Button>

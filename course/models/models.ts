@@ -15,5 +15,6 @@ export interface AssignmentItem {
     code: string;
     due: string;
     title: string;
+    past: boolean;
     url: string | null;
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import ScheduleListing from '@/components/widgets/schedule-listing';
 import { ScrollText } from 'lucide-react';
 import { BookText } from 'lucide-react';
@@ -8,8 +10,13 @@ import { Button } from '@/components/ui/button';
 import Schedule from '@/components/widgets/schedule';
 import Link from 'next/link';
 import Assignments from '@/components/widgets/assignments';
+import { Checkbox } from "@/components/ui/checkbox"
+import React from 'react';
 
 export default function Home() {
+
+  const [showOnlyUpcomingAssignments, setShowOnlyUpcomingAssignments] = React.useState(true);
+  const toggleShowOldAssignments = () => setShowOnlyUpcomingAssignments(!showOnlyUpcomingAssignments);
 
   return (
     <>
@@ -65,10 +72,20 @@ export default function Home() {
         </div>
       </div>
 
-      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
-        Assignments
-      </h2>
-      <Assignments />
+      <div className="flex flex-row justify-between items-center mt-8 scroll-m-20 border-b pb-2 first:mt-0">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Assignments
+        </h2>
+
+        <div className="flex flex-row gap-2 items-center">
+        <Checkbox
+          checked={showOnlyUpcomingAssignments}
+          onCheckedChange={toggleShowOldAssignments}
+        />
+        <p><em>Show only upcoming</em></p>
+        </div>
+      </div>
+      <Assignments showOnlyUpcomingAssignments={showOnlyUpcomingAssignments} />
 
       <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
         Course Schedule
