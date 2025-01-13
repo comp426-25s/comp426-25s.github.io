@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 export async function generateStaticParams() {
   const files = await fs.readdir(path.join(process.cwd(), 'course/content'));
   return files
-    .filter(file => file !== 'assignments' && file !== 'readings')
+    .filter(file => file !== 'assignments' && file !== 'readings' && file !== 'supplemental')
     .map(file => {
       return {
         slug: file.replace('.mdx', '')
