@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Assignments from '@/components/widgets/assignments';
 import { Checkbox } from "@/components/ui/checkbox"
 import React from 'react';
+import Supplements from '@/components/widgets/supplements';
 
 export default function Home() {
 
@@ -91,6 +92,11 @@ export default function Home() {
         Course Schedule
       </h2>
       <Schedule />
+
+      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+        Supplemental Materials
+      </h2>
+      <Supplements />
     </>
   );
 }

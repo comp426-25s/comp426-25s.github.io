@@ -9,7 +9,7 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
             {/* Identity Section */}
             <div className="flex flex-col sm:flex-row sm:items-center">
                 {/* Date Section */}
-                <div className="flex flex-row w-[116px] sm:ml-4">
+                <div className="flex flex-row w-[116px]">
                     <p className="text-sm leading-6">{ props.item.date }</p>
                     <div className=' bg-slate-200 ml-auto pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
                         <p className="text-slate-600 text-sm">{ props.item.code }</p>

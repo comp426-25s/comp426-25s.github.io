@@ -18,3 +18,10 @@ export interface AssignmentItem {
     past: boolean;
     url: string | null;
 }
+
+export interface SupplementItem {
+    code: string;
+    title: string;
+    posted: string;
+    url: string | null;
+}
