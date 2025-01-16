@@ -1,0 +1,148 @@
+# A02: Calculator
+
+## Synopsis
+
+In this assignment, you will practice your TypeScript skills through implementing the business logic functionality for a calculator web app. You will also gain familiarity with using arrow functions syntax and using higher order functions. You will also have the chance to *deploy* your website so that it is live and accessible on the internet - meaning you can share it with others. You will also be able to gain experience with Docker DevContainers and running a web application in a Node environment.
+
+## Prerequisites
+
+You will need to have Docker Desktop installed on your computer. If you do not have these installed, please use the following links to download and install them:
+1. [Docker Desktop](https://www.docker.com/products/docker-desktop)
+    *Make sure to have this app open before getting started!*
+
+Also, please install the Docker DevContainers extension for VS Code. This will allow you to open this project in a Docker DevContainer! Install here: [Docker DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+Docker is a tool that sets up virtual environments specific to the project you are working on. This ensures that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+
+## Getting Started
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here]().
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+7. You can now run the project by running `npm start` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:5173` in your browser. 
+8. Navigate to this URL. You should see a calculator UI appear on your screen! Interacting with the calculator should not work at the moment - this is because you will be implementing the calculator's functionality in this assignment!
+
+You will begin working on this project in the `calculator.ts` file. Check out the project structure section below for more details.
+
+## Project Structure and Architecture
+
+The calculator app is set up with the following file structure:
+
+<CodeBlock language="html">
+{`website
+├── src
+|   ├── calculator.ts
+|   ├── calculator.test.ts
+|   ├── main.ts
+|   ├── operation.ts
+|   ├── utils.ts
+|   └── ...
+├── themes
+|   └── cocoa.css
+├── index.html
+├── styles.css
+└── ...
+`}
+</CodeBlock>
+
+1. **`src/calculator.ts`**: This file contains the `Calculator` class, which includes all of the business logic for the calculator's functionality. *You will be modifying only this file for the entire assignment.* In the traditional MVC (model-view-controller) architecture, this file would be the considered the *model*.
+2. **`src/calculator.test.ts`**: This file contains the tests for the `Calculator` class. This file contains the unit tests that will be used to test the functionality of your implementation of the `Calculator` class. You can run this yourself to check your work and help debug using `npm run test`.
+3. **`src/main.ts`**: This is the TS file that `index.html` loads and therefore serves as the entry point for the application. This file connects the calculator logic to the UI through *event handlers* - so, interactions with the UI will call the calculator object's methods. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *controller*.
+4. **`src/operation.ts`**: This file contains the definition of the `Operation` type, which represents a mathematical operation.
+5. **`src/utils.ts`**: This file contains very important utility functions that you will use in the `Calculator` class. Since the calculator displays *formatted text* (for example, with commas), the display text (a string) must be converted to a number when performing numerical operations, then back to a string again to be displayed. The utility functions in this file will help you with this conversion.
+6. **`themes/cocoa.css`**: This file contains specific CSS color styles for the calculator UI. Feel free to create a new theme and apply it to the calculator UI!
+7. **`index.html`**: This file contains the HTML structure of the calculator UI. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *view*.
+8. **`styles.css`**: This file contains the rest of the CSS styles for the calculator app.
+
+
+## Expectations
+
+In this assignment, you will be implementing the business logic for a calculator web app! You will be implementing all of the empty methods in the `Calculator` class found in the `calculator.ts` file. Please read the docstrings above each method of the class for more information on how to implement the methods. You will be submitting this assignment on GradeScope and an autograder is configured to test your implementation that should give immediate feedback. You have unlimited attempts to submit this assignment, so keep trying until you pass all of the tests! The full grading breakdown is as follows:
+
+{/* ### Rubric */}
+
+<div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+        <tbody>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+                    Requirement
+                </th>
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right w-4">
+                    Points
+                    ( /100)
+                </th>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Functionality</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                <strong>80</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The functionality of your implementation of your `Calculator` class is correct and passes all of the autograder tests. The tests that the autograder will run on your code are available in the `calculator.test.ts` file. 
+                
+                <strong>NOTE: There will be a human grader reading through your implementation in addition to the autograder</strong> to verify that solutions are adequately attempted.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                80
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Deployment</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>20</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website is deployed using Vercel and is accessible at a URL with the format: `https://a02-calculator-yourname.vercel.app`.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                20
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like in a01, we will use Vercel to deploy this assignment.
+
+1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account.
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. Under Framework Preset, make sure "Vite" is selected.
+6. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues!
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a02-calculator-yourname.vercel.app`.
+
+
+
