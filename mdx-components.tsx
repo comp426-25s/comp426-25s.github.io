@@ -12,7 +12,7 @@ import { File, Folder, Tree } from './components/ui/file-tree';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl">
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight mb-6 lg:text-4xl">
             { children }
         </h1>
     ),

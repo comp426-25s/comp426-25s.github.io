@@ -1,15 +1,22 @@
 # Contains the course schedule.
 
-# - code: L01
-#   date: Wed Jan 10
-#   title: HTML Fundamentals
-#   synopsis: null
-#   youtubeUrl: null
-#   slidesUrl: null
+- code: L03
+  date: Mon Jan 13
+  title: Making Layouts with CSS
+  synopsis: null
+  youtubeUrl: https://youtu.be/Kn_4njewrTE
+  slidesUrl: https://docs.google.com/presentation/d/137ar_x6KIBNr0PhXHMVFShiDMq0Jp1qIUZF4LVi5MUQ/edit?usp=sharing
 
-- code: L00
-  date: Mon Jan 8
+- code: L02
+  date: Fri Jan 10
+  title: HTML and CSS
+  synopsis: null
+  youtubeUrl: https://youtu.be/G9xlrvFjUGc
+  slidesUrl: https://docs.google.com/presentation/d/1hLdyXD-HnQdCr38BtyIPTq4MA6P3fUzjA06GZdT-rfE/edit?usp=sharing
+
+- code: L01
+  date: Wed Jan 8
   title: Welcome to COMP 426!
   synopsis: null
-  youtubeUrl: null
-  slidesUrl: null
+  youtubeUrl: https://youtu.be/waWglA2l_po
+  slidesUrl: https://docs.google.com/presentation/d/1-EAMU-EGuJqkLq6E_6Lf1wpivchuCD1gqbQkCG5VtNs/edit?usp=sharing

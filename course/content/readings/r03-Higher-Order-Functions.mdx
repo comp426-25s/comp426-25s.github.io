@@ -22,9 +22,9 @@ function doubleNumber(num: number): number {
 
 This function is rather simple - it takes in a `number` as an input, then returns *double that number* as its output!
 
-Here, we are using the [traditional function syntax](https://github.com/unc-csxl/orientation/blob/main/frontend/typescript_tutorial.md#defining-functions) to define this function. We use the `function` keyword first, provide the name of the function, its parameters with type annotations, a return type of `number`, then the function body.
+Here, we are using the traditional function syntax to define this function. We use the `function` keyword first, provide the name of the function, its parameters with type annotations, a return type of `number`, then the function body.
 
-Now, using what you learned in the [arrow function section](https://github.com/unc-csxl/orientation/blob/main/frontend/typescript_tutorial.md#arrow-functions) of the *TypeScript for the COMP 301 Java Developer* reading, let's convert the `doubleNumber()` function into *arrow function syntax*.
+Now, using what you learned in the arrow function section of the *TypeScript for the COMP 301 Java Developer* reading, let's convert the `doubleNumber()` function into *arrow function syntax*.
 
 <div className=" my-6">
 <CodeComparison
@@ -153,7 +153,7 @@ In a sense, it's similarly as infrequent to use as directly subscripting a strin
 <div className=" my-6">
 <Code
     code=
-{`"abcd"[Math.floor(Math.random() * 4`}
+{`"abcd"[2]`}
     language="ts"
     filename="TypeScript"
     lightTheme="one-light"
@@ -334,7 +334,7 @@ If we wanted to pass in a *function* in here, how would we add this into our fun
 
 As you can see, this now would provide a new parameter called `transformFunction` of type `(num: number) => number` that will enable us to pass in a function with that type annotation! 
 
-To make our lives easier and make our code a lot more concise, we can also create a [*type alias*](https://github.com/unc-csxl/orientation/blob/main/frontend/typescript_tutorial.md#type-aliases) for our function's type! That will make it easier to type and more readable. If you are not familiar with type annotations, check out the TypeScript Tutorial docs to learn more.
+To make our lives easier and make our code a lot more concise, we can also create a *type alias* for our function's type! That will make it easier to type and more readable. If you are not familiar with type annotations, check out the TypeScript Tutorial docs to learn more.
  
  <div className=" my-6">
 <Code

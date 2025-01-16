@@ -1,3 +1,5 @@
+"use client"
+
 import ScheduleListing from '@/components/widgets/schedule-listing';
 import { ScrollText } from 'lucide-react';
 import { BookText } from 'lucide-react';
@@ -8,8 +10,14 @@ import { Button } from '@/components/ui/button';
 import Schedule from '@/components/widgets/schedule';
 import Link from 'next/link';
 import Assignments from '@/components/widgets/assignments';
+import { Checkbox } from "@/components/ui/checkbox"
+import React from 'react';
+import Supplements from '@/components/widgets/supplements';
 
 export default function Home() {
+
+  const [showOnlyUpcomingAssignments, setShowOnlyUpcomingAssignments] = React.useState(true);
+  const toggleShowOldAssignments = () => setShowOnlyUpcomingAssignments(!showOnlyUpcomingAssignments);
 
   return (
     <>
@@ -28,7 +36,7 @@ export default function Home() {
         Important Links
       </h2>
 
-      <div className="flex flex-row w-full">
+      <div className="flex flex-col sm:flex-row w-full">
         {/* Left column */}
         <div className="flex flex-col w-1/2">
           {/* Syllabus button */}
@@ -49,7 +57,7 @@ export default function Home() {
         {/* Right column */}
         <div className="flex flex-col w-1/2">
           {/* Team 426 button */}
-          <Button variant="ghost" className="mt-2 w-full h-10 pl-2 pr-2">
+          <Button variant="ghost" className="sm:mt-2 w-full h-10 pl-2 pr-2">
             <Link href="/team-426" className='flex flex-row items-center w-full !font-medium  h-6'>
               <Users className="h-5 w-5 stroke-green-700" />
               <span className="ml-2  font-semibold">Team 426</span>
@@ -65,15 +73,30 @@ export default function Home() {
         </div>
       </div>
 
-      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
-        Assignments
-      </h2>
-      <Assignments />
+      <div className="flex flex-row justify-between items-center mt-8 scroll-m-20 border-b pb-2 first:mt-0">
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Assignments
+        </h2>
+
+        <div className="flex flex-row gap-2 items-center">
+        <Checkbox
+          checked={showOnlyUpcomingAssignments}
+          onCheckedChange={toggleShowOldAssignments}
+        />
+        <p><em>Show only upcoming</em></p>
+        </div>
+      </div>
+      <Assignments showOnlyUpcomingAssignments={showOnlyUpcomingAssignments} />
 
       <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
         Course Schedule
       </h2>
       <Schedule />
+
+      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+        Supplemental Materials
+      </h2>
+      <Supplements />
     </>
   );
 }

@@ -4,9 +4,28 @@
   due: Fri Jan 10 @ 11:59PM
   title: Syllabus and Pre-Survey
   url: syllabus
-  
-# - code: A01
-#   due: Sun Jan 19 @ 11:59PM
-#   title: Personal Portfolio
-#   url: assignments/a01-personal-portfolio
+  past: true
 
+- code: R01
+  due: Sun Jan 12 @ 11:59PM
+  title: HTML and CSS Fundamentals
+  url: readings/r01-HTML-CSS-Fundamentals
+  past: true
+
+- code: R02
+  due: Tue Jan 14 @ 11:59PM
+  title: TypeScript 101
+  url: readings/r02-TypeScript-for-Java-Developer
+  past: true
+  
+- code: A01
+  due: Sun Jan 19 @ 11:59PM
+  title: Personal Portfolio
+  url: assignments/a01-personal-portfolio
+  past: false
+
+- code: R03
+  due: Tue Jan 21 @ 11:59PM
+  title: Higher Order Functions
+  url: readings/r03-Higher-Order-Functions
+  past: false
