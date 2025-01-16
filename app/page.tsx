@@ -83,7 +83,7 @@ export default function Home() {
           checked={showOnlyUpcomingAssignments}
           onCheckedChange={toggleShowOldAssignments}
         />
-        <p><em>Show only upcoming</em></p>
+        <p className='text-sm'><em>Hide past due</em></p>
         </div>
       </div>
       <Assignments showOnlyUpcomingAssignments={showOnlyUpcomingAssignments} />
