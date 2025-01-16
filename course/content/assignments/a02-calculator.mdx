@@ -56,14 +56,14 @@ The calculator app is set up with the following file structure:
 `}
 </CodeBlock>
 
-1. `src/calculator.ts`: This file contains the `Calculator` class, which includes all of the business logic for the calculator's functionality. *You will be modifying only this file for the entire assignment.* In the traditional MVC (model-view-controller) architecture, this file would be the considered the *model*.
-2. `src/calculator.test.ts`: This file contains the tests for the `Calculator` class. This file contains the unit tests that will be used to test the functionality of your implementation of the `Calculator` class. You can run this yourself to check your work and help debug using `npm run test`.
-3. `src/main.ts`: This is the TS file that `index.html` loads and therefore serves as the entry point for the application. This file connects the calculator logic to the UI through *event handlers* - so, interactions with the UI will call the calculator object's methods. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *controller*.
-4. `src/operation.ts`: This file contains the definition of the `Operation` type, which represents a mathematical operation.
-5. `src/utils.ts`: This file contains very important utility functions that you will use in the `Calculator` class. Since the calculator displays *formatted text* (for example, with commas), the display text (a string) must be converted to a number when performing numerical operations, then back to a string again to be displayed. The utility functions in this file will help you with this conversion.
-6. `themes/cocoa.css`: This file contains specific CSS color styles for the calculator UI. Feel free to create a new theme and apply it to the calculator UI!
-7. `index.html`: This file contains the HTML structure of the calculator UI. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *view*.
-8. `styles.css`: This file contains the rest of the CSS styles for the calculator app.
+1. **`src/calculator.ts`**: This file contains the `Calculator` class, which includes all of the business logic for the calculator's functionality. *You will be modifying only this file for the entire assignment.* In the traditional MVC (model-view-controller) architecture, this file would be the considered the *model*.
+2. **`src/calculator.test.ts`**: This file contains the tests for the `Calculator` class. This file contains the unit tests that will be used to test the functionality of your implementation of the `Calculator` class. You can run this yourself to check your work and help debug using `npm run test`.
+3. **`src/main.ts`**: This is the TS file that `index.html` loads and therefore serves as the entry point for the application. This file connects the calculator logic to the UI through *event handlers* - so, interactions with the UI will call the calculator object's methods. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *controller*.
+4. **`src/operation.ts`**: This file contains the definition of the `Operation` type, which represents a mathematical operation.
+5. **`src/utils.ts`**: This file contains very important utility functions that you will use in the `Calculator` class. Since the calculator displays *formatted text* (for example, with commas), the display text (a string) must be converted to a number when performing numerical operations, then back to a string again to be displayed. The utility functions in this file will help you with this conversion.
+6. **`themes/cocoa.css`**: This file contains specific CSS color styles for the calculator UI. Feel free to create a new theme and apply it to the calculator UI!
+7. **`index.html`**: This file contains the HTML structure of the calculator UI. In the traditional MVC (model-view-controller) architecture, this file would be the considered the *view*.
+8. **`styles.css`**: This file contains the rest of the CSS styles for the calculator app.
 
 
 ## Expectations
