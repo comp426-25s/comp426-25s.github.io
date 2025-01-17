@@ -29,3 +29,9 @@
   title: Higher Order Functions
   url: readings/r03-Higher-Order-Functions
   past: false
+
+- code: R04
+  due: Sun Jan 26 @ 11:59PM
+  title: HTTP and APIs
+  url: readings/r04-HTTP-Basics
+  past: false
