@@ -1,4 +1,11 @@
 # Contains the course schedule.
+- code: L05
+  date: Wed Jan 22
+  title: Event Handlers and the DOM
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
+
 - code: L04
   date: Fri Jan 17
   title: JavaScript, TypeScript, and Build Tools
