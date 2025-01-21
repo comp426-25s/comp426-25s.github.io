@@ -22,7 +22,7 @@
   due: Sun Jan 19 @ 11:59PM
   title: Personal Portfolio
   url: assignments/a01-personal-portfolio
-  past: false
+  past: true
 
 - code: R03
   due: Tue Jan 21 @ 11:59PM
@@ -34,4 +34,10 @@
   due: Sun Jan 26 @ 11:59PM
   title: HTTP and APIs
   url: readings/r04-HTTP-Basics
+  past: false
+
+  - code: A02
+  due: Mon Jan 27 @ 11:59PM
+  title: Calculator
+  url: assignments/a02-calculator
   past: false
