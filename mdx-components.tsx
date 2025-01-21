@@ -8,6 +8,12 @@ import CodeComparison from './components/ui/code-comparison';
 import Code from './components/ui/code';
 import Safari from './components/ui/safari';
 import { File, Folder, Tree } from './components/ui/file-tree';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+  } from "@/components/ui/accordion"
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -93,6 +99,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Tree,
     Folder,
     File,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
     ...components,
   }
 }

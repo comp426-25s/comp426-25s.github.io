@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 # A02: Calculator
 
 ## Synopsis
@@ -149,4 +156,31 @@ You will submit your final website to Gradescope. Before submitting, make sure t
 2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a02-calculator-yourname.vercel.app`.
 
 
+## Common Problems / FAQ
 
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger><strong>I am having trouble with Vite's hot-reloading feature.</strong></AccordionTrigger>
+    <AccordionContent>
+      We have been tracking this problem and believe it may be due to the Docker container used on Windows computers. Try to replace the contents of the `vite.config.ts` file to:
+
+        <Code
+            className="mt-4"
+            code=
+{`export default defineConfig({
+    server: {
+        port: 4260,
+        host: true,
+        watch: {
+            usePolling: true
+        }
+    }
+});`}
+            language="ts"
+            filename="vite.config.ts"
+            lightTheme="one-light"
+            darkTheme="one-dark"
+        />
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
