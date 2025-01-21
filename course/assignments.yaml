@@ -36,7 +36,7 @@
   url: readings/r04-HTTP-Basics
   past: false
 
-  - code: A02
+- code: A02
   due: Mon Jan 27 @ 11:59PM
   title: Calculator
   url: assignments/a02-calculator
