@@ -1,10 +1,10 @@
 # Contains the course schedule.
 - code: L05
   date: Wed Jan 22
-  title: Event Handlers and the DOM
+  title: Functional Programming and Closures
   synopsis: null
-  youtubeUrl: null
-  slidesUrl: null
+  youtubeUrl: https://youtu.be/F-VSIsXyswk
+  slidesUrl: https://docs.google.com/presentation/d/1_nRVR77A0n1XNXXVhw5XNXxtzCjja67o0uPkP0d07GU/edit?usp=sharing
 
 - code: L04
   date: Fri Jan 17
