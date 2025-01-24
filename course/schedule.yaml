@@ -1,4 +1,11 @@
 # Contains the course schedule.
+
+- code: L06
+  date: Fri Jan 24
+  title: Event Handling and the DOM
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1IOeEUXZKUl-7P4odw19nfYn2YN3cCfgX8DQ5xDTgqRU/edit?usp=sharing
 - code: L05
   date: Wed Jan 22
   title: Functional Programming and Closures
