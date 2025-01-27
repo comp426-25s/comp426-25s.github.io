@@ -34,7 +34,7 @@
   due: Sun Jan 26 @ 11:59PM
   title: HTTP and APIs
   url: readings/r04-HTTP-Basics
-  past: false
+  past: true
 
 - code: A02
   due: Mon Jan 27 @ 11:59PM

@@ -1,5 +1,12 @@
 # Contains the course schedule.
 
+- code: L07
+  date: Mon Jan 27
+  title: Asynchronous TypeScript
+  synopsis: null
+  youtubeUrl: https://youtu.be/sozzKzukgKQ
+  slidesUrl: https://docs.google.com/presentation/d/1_KvkwJyTlArsHcg9hsiwMan--39ub47gtndR48LP1z8/edit?usp=sharing
+
 - code: L06
   date: Fri Jan 24
   title: Event Handling and the DOM
