@@ -41,3 +41,9 @@
   title: Calculator
   url: assignments/a02-calculator
   past: false
+
+- code: A03
+  due: Wed Feb 5 @ 11:59PM
+  title: Pixel Art Maker
+  url: assignments/a03-pixel-art-maker
+  past: false
