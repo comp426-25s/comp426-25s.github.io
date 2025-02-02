@@ -1,12 +1,18 @@
 # Contains the course schedule.
 
+- code: L08
+  date: Mon Feb 3
+  title: Intro to React
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1xXEHIsqIwgbnXJpKSgkRzIU5bpV952k0mEBV74Vm6uA/edit?usp=sharing
+
 - code: M01
   date: Fri Jan 31
   title: Midterm 01
   synopsis: null
   youtubeUrl: null
   slidesUrl: null
-
 
 - code: P01
   date: Wed Jan 29
