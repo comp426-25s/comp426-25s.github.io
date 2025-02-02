@@ -40,10 +40,22 @@
   due: Mon Jan 27 @ 11:59PM
   title: Calculator
   url: assignments/a02-calculator
-  past: false
+  past: true
 
 - code: A03
   due: Wed Feb 5 @ 11:59PM
   title: Pixel Art Maker
   url: assignments/a03-pixel-art-maker
+  past: false
+
+- code: R05
+  due: Fri Feb 7 @ 11:59PM
+  title: React Part 1 - Describing UI
+  url: readings/r05-React-Part-1
+  past: false
+
+- code: R06
+  due: Sun Feb 9 @ 11:59PM
+  title: React Part 2 - Adding Interactivity
+  url: readings/r06-React-Part-2
   past: false

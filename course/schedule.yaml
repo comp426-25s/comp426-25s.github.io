@@ -1,8 +1,16 @@
 # Contains the course schedule.
 
-- code: L08
+- code: M01
+  date: Fri Jan 31
+  title: Midterm 01
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
+
+
+- code: P01
   date: Wed Jan 29
-  title: Midterm 01 Review
+  title: Midterm 01 Practice
   synopsis: null
   youtubeUrl: null
   slidesUrl: https://drive.google.com/file/d/1AImL8XIloz0I3Ywe53Z_To-el2tlw429/view?usp=share_link
