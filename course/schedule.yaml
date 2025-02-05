@@ -1,5 +1,12 @@
 # Contains the course schedule.
 
+- code: L09
+  date: Wed Feb 5
+  title: React State
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/12LKu264T8mrj8hq8QyXKd8EubCt88QVWmC6oQicLIVw/edit?usp=sharing
+
 - code: L08
   date: Mon Feb 3
   title: Intro to React
