@@ -1,5 +1,12 @@
 # Contains the course schedule.
 
+- code: L10
+  date: Fri Feb 7
+  title: CSS Frameworks (Tailwind)
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1JCpqKcWmUFMgTJEOoG1RHsuN-CTCJhz_S6_Cr0ZRnQM/edit?usp=sharing
+
 - code: L09
   date: Wed Feb 5
   title: React State
