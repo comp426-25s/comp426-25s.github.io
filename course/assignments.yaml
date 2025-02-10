@@ -46,13 +46,13 @@
   due: Thu Feb 6 @ 11:59PM
   title: Pixel Art Maker
   url: assignments/a03-pixel-art-maker
-  past: false
+  past: true
 
 - code: R05
   due: Fri Feb 7 @ 11:59PM
   title: React Part 1 - Describing UI
   url: readings/r05-React-Part-1
-  past: false
+  past: true
 
 - code: R06
   due: Sun Feb 9 @ 11:59PM
