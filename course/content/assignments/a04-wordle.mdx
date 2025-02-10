@@ -1,0 +1,264 @@
+# A04: Wordle
+
+## Synopsis
+
+In this assignment, you will be recreating **Wordle** - [the famous word game](https://www.nytimes.com/games/wordle/index.html)! This implementation will be made using React and Tailwind, deployed live on the internet using Vercel.
+
+## Prerequisites
+
+All of the tooling that was required for A03: Pixel Art Maker will be required for this assignment. This includes Docker Desktop.
+
+Also, please install the Docker DevContainers extension for VS Code. This will allow you to open this project in a Docker DevContainer. Install here: [Docker DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+## Getting Started
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here](https://classroom.github.com/a/m-5zP6HF). *This is an indidivual assignment so that everyone is able to practice using the tools we have introduced recently in class*.
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. If you have many detected changes in the Git tab of VSCode after the container builds, you may *clear all changes*. 
+7. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+8. You can now run the project by running `npm run dev` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:4260` in your browser. 
+9. Navigate to this URL. You should see the scaffolding for the Wordle game, including a header and the keyboard! You will be implementing the rest of the game and functionality.
+
+## Project Structure and Instructions
+
+The Wordle app is a **React app**, with most of the UI encapsulated in React components. The app also utilizes **Tailwind CSS** for styling. The project structure is as follows:
+
+<CodeBlock language="html">
+{`website
+├── src
+|   ├── [React components].tsx
+|   ├── main.tsx
+|   └── ...
+├── index.html
+└── ...
+`}
+</CodeBlock>
+
+The root React component is stored in `App.tsx`, and is mounted into the HTML via the `main.tsx` file. To complete this app, you will need to add functionality to multiple components. We recommend completing the `TODO` steps (written in comments in the `.tsx` files) in this order:
+
+1. **`Tile.tsx`**: This file specifies the component for a single tile on the Wordle game grid. You will implement this component from scratch. You will also be required to add styling to the component using Tailwind. I recommend using the [Tailwind CSS documentation](https://tailwindcss.com/docs) to help you with this.
+
+2. **`TileRow.tsx`**: This file specifies the component for a single row of tiles on the Wordle game grid. The TSX markup has been completed for you, but you need to implement one function at the bottom of the tile. Check the docstring for more details.
+
+3. **`App.tsx`**: This file specifies the root component of the app. *Read through this file and all comments in full.* You will be required to implement many helper methods, call external APIs, work with React state hooks, and set up React effect hooks.
+
+## External APIs
+
+The Wordle game will require accessing external data via an API call. The API has been created for you and is accessible at this URL: `https://a04-wordle-api.vercel.app/api/`. The API has two endpoints:
+
+* `GET /api/word-valid/[word]`
+    This endpoint determines if a provided 5-letter word is a valid guess (word exists in the dictionary). This endpoint will be used to ensure that all guesses from the user are valid words.
+* `GET /api/random-word/`
+    This endpoint generates a random 5-letter word. This will be used at the start of the game to determine the word that the user is trying to guess.
+
+Remember from *R04: HTTP and APIs* and from the asynchronous programming lecture that we can load data asynchronously using the `fetch` API. We can then use .then()` method of the returned promise to work with the data, like so:
+
+<div className=" my-6">
+<Code
+    code=
+{`await fetch(\`url here\`)
+    .then((response) => response.json())
+    .then((data) => {
+        // do something with the data
+    });
+`}
+
+    language="ts"
+    filename="example.ts"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+## Expectations
+
+The full grading breakdown of the app is described below:
+
+{/* ### Rubric */}
+
+{
+/*
+- 10pts: Tile Tailwind styling correct.
+- 20pts: TileRow functionality correct
+- 20pts: The user is able to type and delete letters in a guess. The guess can only be max 5 guaracters long.
+    - An alert shows up if the user attempts to submit a guess that is less than 5 characters long.
+    - An alert shows up if the user attempts to submit a guess that is not a real word.
+- 10pts: Random word is selected every time using the API.
+- 10pts: The game over page shows up if the user has used all 6 guesses, if correct, the correct word is shown.
+
+- 20pts: Vercel deployment
+
+- EC 5pts: keyboard
+*/
+}
+
+<div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+        <tbody>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+                    Requirement
+                </th>
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right w-4">
+                    Points
+                    ( /100)
+                </th>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Technical Requirements</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>15</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The `Tile.tsx` styling is applied solely using Tailwind CSS without any external `.css` files used.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                15
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Functionality</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                <strong>70</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The colors of the tiles correctly indicate the correctness of each guess. This is determined using the `stateForTile` method implementation in the `TileRow.tsx` file.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The user is able to add and remove characters from the current guess. 
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The game alerts the user if they attempt to submit a guess that is too short.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The game alerts the user if they attempt to submit a guess that is not a word.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Guessing a word updates the game state and the user is able to see the result of their guess. Then, the user is able to guess again and typing results in letters appearing on the next line.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                A new random word is selected from the API every time the game loads.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The game over page shows up if the user has used all 6 guesses. If the user guesses the word, the game won screen is shown. Both should show up after a 100ms delay from when the most recent guess's result is shown.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Necessary validation is included to account for edge cases.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Deployment</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>15</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website is deployed using Vercel and is accessible at a URL with the format: `https://a04-wordle-yourname.vercel.app`.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                15
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Extra Credit</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>5</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                In the real Wordle game, you can type on your keyboard to type characters. As noted in the assignment reading, you can add keyboard support to Wordle using traditional event handlers. Remember that adding event handler is considered a *side effect*. Make sure that you use React's features to clean up the event handler when the component is unmounted. 
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like in a03, we will use Vercel to deploy this assignment.
+
+1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. Under Framework Preset, make sure "Vite" is selected.
+6. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues!
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a04-wordle-yourname.vercel.app`.
