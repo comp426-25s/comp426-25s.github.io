@@ -58,4 +58,10 @@
   due: Sun Feb 9 @ 11:59PM
   title: React Part 2 - Adding Interactivity
   url: readings/r06-React-Part-2
+  past: true
+
+- code: A04
+  due: Tue Feb 18 @ 11:59PM
+  title: Wordle
+  url: assignments/a04-wordle
   past: false
