@@ -1,5 +1,12 @@
 # Contains the course schedule.
 
+- code: L11
+  date: Wed Feb 12
+  title: Managing Side Effects
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1pNh9gOm38jrlDgcRWHZthyooj50k217Q-ymnO40BaBQ/edit?usp=sharing
+
 - code: L10
   date: Fri Feb 7
   title: CSS Frameworks (Tailwind)
