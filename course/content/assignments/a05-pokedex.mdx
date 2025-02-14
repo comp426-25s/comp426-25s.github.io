@@ -1,0 +1,461 @@
+# A05: Pokedex
+
+## Synopsis
+
+In this assignment, you will be creating a **Pokedex** app to display information about Pokemon!  This app will be built using Next.js, deployed live to the internet via Vercel. This is our first relatively large project, and it will combine many of the tools you have learned so far.
+
+## What are Pokemon?
+
+If you are familiar with Pokemon, great! If not, Pokemon are creatures that inhabit the world of the Pokemon video games. These creatures are trained by humans called Pokemon Trainers, who use them to battle other Pokemon (either in the wild or in competitions). These creatures are all unique, with different moves they can learn (that all perform different amounts of damage) and stats (like HP, Attack, Defense, etc.). Both Pokemon and their moves have *types* (like Fire, Water, Grass, etc.) that can be strong or weak against other types. Pokemon are often grouped / classified by their types. Pokemon can have at most two types, and their moves can inflict damage of at most one type. Through leveling up, Pokemon can also *evolve* - allowing them to turn into a different Pokemon with stronger stats.
+
+<div className="py-4">
+    <div className="flex flex-row gap-2">
+        <a href="https://pokemondb.net/pokedex/pikachu" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/pikachu-f.png" alt="Pikachu" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/charizard" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/charizard.png" alt="Charizard" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/mew" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/mew.png" alt="Mew" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/shaymin" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/shaymin-land.png" alt="Shaymin" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/tangela" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/tangela.png" alt="Tangela" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/gengar" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/gengar.png" alt="Gengar" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/lucario" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/lucario.png" alt="Lucario" />
+        </a>
+        <a href="https://pokemondb.net/pokedex/rayquaza" target="_blank" className=" cursor-pointer">
+            <img src="https://img.pokemondb.net/sprites/black-white/normal/rayquaza.png" alt="Rayquaza" />
+        </a>
+    </div>
+    <p className="italic !text-slate-500">Above are some examples of Pokemon! Click on each to learn more about them, including their types and their movesets.</p>
+</div>
+
+In all Pokemon games at the start of their journey, the player is given a **Pokedex**. The Pokedex is a reference tool that stores information about all of the Pokemon. The Pokedex contains information about the Pokemon's type, stats, moves, and more. Think of this like a digital encyclopedia for Pokemon! In this assignment, you will be creating a Pokedex app that will display information about Pokemon and their moves.
+
+## Prerequisites
+
+If you have not already, please install the Docker DevContainers extension for VS Code. This will allow you to open this project in a Docker DevContainer.
+
+Install here: [Docker DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+## Project Structure and Instructions
+
+The starter code for this assignment contains a Next.js project set up for you. This Next.js project is accessible in the `web` directory:
+<CodeBlock language="html">
+{`a05-pokedex
+├── .devcontainer
+|   └── ( DevContainer configuration files )
+└── web
+      └── ( ! Next.js project here ! )
+`}
+</CodeBlock>
+
+***This is very important because to run the project and `npm install`, you need to `cd web` first!!*** This setup may seem dubious now but we will be expanding this file structure in the future, so I want you all getting used to this step now.
+
+## Getting Started
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here](https://classroom.github.com/a/lLmstPA_). *This is an indidivual assignment so that everyone is able to practice using the tools we have introduced recently in class*.
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. If you have many detected changes in the Git tab of VSCode after the container builds, you may *clear all changes*. 
+7. _**Remember to `cd web`!**_
+8. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+9. You can now run the project by running `npm run dev` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:3000` in your browser. 
+
+## New Library: React Query
+
+### What is React Query? 
+
+Another prerequisite for this assignment is to familiarize yourself with the [**React Query**](https://tanstack.com/query/v3/) library. React Query is a powerful library that aims to make data fetching and caching in React applications easier, preventing many common edge cases that arise when loading data *on the client side* using the traditional `useEffect` approach. Below is a great video that helps to explain *why* React Query is preferred (and why nearly 1 out of every 6 React projects use it) - **watch this before proceeding!**:
+
+<div className="py-4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OrliU0e09io?si=jbPTzbda-QfJu0_-" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+</div>
+
+As you can see, there are many benefits to using React Query. To fetch data from an external API using React Query, we will use React Query's `useQuery` hook. The usage of this hook is very similar to the `useState` and `useEffect` hooks in the sense that they are hooks placed within React components. An example is shown below:
+
+<div className=" my-6">
+<Code
+    code=
+{`export default function MyComponent() {
+
+    const [word, setWord] = useState<string>('hello');
+
+    const fetcher = async (): { verify: boolean } => {
+        const response = await fetch('https://a04-wordle-api/verify/\$\{word\}');
+        return response.json();
+    }
+
+    const { data, error, isLoading } = useQuery(['my-data', word], fetcher);
+
+    return (
+        <div>
+            {isLoading ? <p>Loading...</p> : null}
+            {error ? <p>Error: {error.message}</p> : null}
+            {data ? <p>{data}</p> : null}
+        </div>
+    )
+}
+`}
+    language="tsx"
+    filename="my-component.tsx"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+As you can see, the `useQuery` hook takes two arguments:
+- A dependency array. The first element of this array is a *key* that is used to internally identify the data. This assists with caching and invalidation, all features that React Query takes care of behind the scenes. Any items afterwards in this array are used as *dependencies* for the query - similar to `useEffect`! If any of these dependencies change, the fetching function will re-run and data will refresh. In the example above, if the `word` state changes, the query will re-run.
+- A function that fetches the data. This function is an asynchronous function that returns a promise. The function should return the data that you want to fetch. In the example above, the function fetches data from the external API we used in A04!
+
+This hook returns an object with three fields, which we can destruture into three variables using [TypeScript's *destructuring* syntax](https://basarat.gitbook.io/typescript/future-javascript/destructuring#object-destructuring):
+- `data`: The data fetched from the API. This will be `undefined` if the data has not been fetched yet.
+- `error`: An error object if an error occurred while fetching the data. This will be `undefined` if no error occurred.
+- `isLoading`: A boolean that is `true` if the data is still being fetched, and `false` otherwise.
+
+Using the combination of these three fields, we can easily display loading states, error messages, and the data itself in our UI, as shown above.
+
+### React Query Installation
+
+To use React Query, we first need to install it as a dependency. We can do this by running the following command in the terminal:
+
+<div className=" my-6">
+<Code
+    code=
+{`npm i @tanstack/react-query
+npm i -D @tanstack/eslint-plugin-query
+`}
+    language="bash"
+    filename="Terminal"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+*If you see a message saying that these packages are already installed, no problem! Proceed with the steps below.*
+
+Once the package has been installed, we need one more step, which is to wrap our entire application in a `QueryClientProvider`. This provider is a React Context Provider that allows all of our components to access the React Query client. This is done in the `pages/_app.tsx` file, which is a special file in Next.js that wraps all of our pages. The code to wrap the app in the `QueryClientProvider` is shown below:
+
+<div className=" my-6">
+<Code
+    code=
+{`import "@/styles/globals.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { AppProps } from "next/app";
+
+// STEP 1: Create the object that will manage queries across the app.
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+    return (
+        { /* STEP 2: Wrap the entire app in the QueryClientProvider */ }
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      );
+}`}
+    language="tsx"
+    filename="pages/_app.tsx"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Now that this has been set up, you will be able to use React Query's `useQuery` hook in any of your components!
+
+In this assignment, we will be fetching Pokemon data from the [PokeAPI](https://pokeapi.co) - an amazing, completely free API for Pokemon data. Some of the data will have to be fetched on the server side using `getServerSideProps()`, and other data will have to be fetched on the client side. **All data fetched on the client side should use React Query!**
+
+## External APIs
+
+As mentioned above, this assignment will require fetching data from the [PokeAPI](https://pokeapi.co)! There are a few specific endpoints to keep in mind that we will use in this assignment:
+* **`GET https://pokeapi.co/api/v2/pokemon?limit=50&offset={N}`** --> `Pokedex`
+
+    This endpoint will return a list of 50 Pokemon, starting from the Pokemon at index `N`. This will be used to display a list of Pokemon on the home page. The `N` parameter can be updated to fetch different sets of Pokemon. So, the Pokemon fetched would be at indices `N` to `N + 50`. Chunking data loads into pages, called **pagination**, is common practice in software engineering and helps to prevent loading too much data on a page at once, which can cause major performance issues. For this assignment, you will be working with pages of 50, and there should be buttons on your website to change between pages (adjusting the N parameter as the page changes).
+* **`GET https://pokeapi.co/api/v2/pokemon/{name}`**  --> `Pokemon`
+   
+   **`GET https://pokeapi.co/api/v2/pokemon-species/{name}`** --> `PokemonSpecies`
+
+    These endpoints will return detailed information about a specific Pokemon. The first endpoint will return information about the Pokemon's stats, abilities, and moves, while the second endpoint will return information about the Pokemon's type, evolution chain, and more. You will need to access *both* these endpoints to display all the information about a Pokemon on the Pokemon detail page!
+* **`GET https://pokeapi.co/api/v2/move/{move-name}/`** --> `Move`
+
+    This endpoint will return detailed information about a specific move given its name.
+
+I also want to point you to the *types* declared in the `/web/data/models` directory. These types are used to define the shape of the data that will be fetched from the PokeAPI. You will need to use these types to ensure that the data you fetch from the API is correctly typed! The corresponding data types to APIs are shown above in the API endpoints list. The endpoints will return data in the format of the type after each arrow.
+
+<Alert className="my-6">
+    <AlertTitle className="font-semibold text-base">Important Note about Data Types</AlertTitle>
+    <AlertDescription>
+        By default, the result of fetching data and running `result.json()` as we have done returns data of type `any`. We want to make sure that we correctly cast the results of these API calls to the types defined in the `/web/data/models` directory. This will ensure that our data is correctly typed and that we can access the data fields without any issues. To do this, we first will cast to `unknown`, then to the desired type (this helps to prevent type errors in TypeScript). An example of this is shown below:
+
+        <div className="my-6">
+        <Code
+            code=
+        {`const pokemonResponse = await fetch(\`pokemon url\`);
+const pokemon = (await pokemonResponse.json()) as unknown as Pokemon;
+`}
+            language="ts"
+            filename="Casting Response Type"
+            lightTheme="one-light"
+            darkTheme="one-dark"
+        />
+        </div>
+
+
+       In the future, we will use more robust tools to ensure that our data is correctly typed, but for now, we will use this approach.
+    </AlertDescription>
+</Alert>
+
+## Expectations
+
+The starter code and comments written in the code for this particular project is far more minimal than some of the previous assignments - *the training wheels are coming off : )*
+
+You will be ultimately implementing three main pages:
+- **Home Page**: This page will display a list of Pokemon, with each Pokemon displaying at least its name. The list should be paginated, with buttons to navigate between pages of Pokemon.
+- **Pokemon Detail Page**: This page will display detailed information about a specific Pokemon, including its image, typing, stats, moves, and more.
+- **Move Detail Page**: This page will display detailed information about a specific move, including its type, power, accuracy, and description.
+
+The rubric below explains the expectations for each of these pages, point values associated with each, and the extra credit opportunities available to you. Read through this rubric carefully - if needed, print this out and checkmark as you go along!
+
+<div className="my-6 w-full overflow-y-auto">
+    <table className="w-full">
+        <tbody>
+        <tr className="m-0 border-t p-0 even:bg-muted">
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
+                    Requirement
+                </th>
+                <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right w-4">
+                    Points
+                    ( /100)
+                </th>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Home Page Requirements</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>30</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                This page should be accessible at the root route (`/`).
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                The home page should display a list of Pokemon, with each Pokemon displaying at least its name.
+
+                The list should be paginated - meaning that at most 50 Pokemon should be shown on the home page at a time. Add buttons (or some other form of input) so that the user can navigate between pages of Pokemon. For example, if the user is on page 1, they should be able to click a button to go to page 2 and see the next 50 pages of Pokemon. The user should be able to navigate to previous pages as well.
+
+                <ul>
+                    <li>If the user is on the first page, the button to go to the previous page should be disabled.</li>
+                    <li>If the user is on the last page, the button to go to the next page should be disabled. <em>(HINT: The Pokedex API endpoint returns a total count of all objects, not just the count on the current page. Use this and the page size to determine the maximum number of pages!)</em></li>
+                    <li>(Note: You can accomplish all of this just using the hooks you already know, including `useState` and now `useQuery`!)</li>
+                </ul>
+
+                This data must be fetched on the client side using React Query (`useQuery`). If not, points will be deducted.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                20
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Clicking on a Pokemon in the list should navigate the user to a detail page for that Pokemon.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Pokemon Detail Page</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                <strong>25</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                This page should be accessible at the route `/pokemon/[name]`, where `[name]` is the name of the Pokemon.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                This page should display detailed information about the Pokemon, including its image, typing, stats, the moves it can learn, a description, and the Pokemon it evolved from, if any. You will need to use **BOTH** the `/pokemon/{name}` and `/pokemon-species/{name}` endpoints to get all of this information!
+
+                This data must be fetched on the server side using `getServerSideProps` as shown in class! All of the "detail pages" will load data this way. This enables the user to instantly see the data about the Pokemon they clicked on, without having to wait for the data to load on the client side. The data fetched on the server side should be passed to the component as props.
+
+                To accomplish a lot of this, refer to **Lecture 14**! This will discuss [dynamic routes](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes) and loading data server-side using [getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props).
+
+                Not using `getServerSideProps` will result in a deduction of points.
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                There should be a button for the user to navigate back to the *previous page*. *(HINT: You can use the `useRouter` hook offered by Next.js! Specifically, read documentation [here](https://nextjs.org/docs/pages/api-reference/functions/use-router#routerback))*
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                For every move that the Pokemon can learn, ensure that these are clickable and navigate to the move detail page.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Move Detail Page</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                <strong>15</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                This page should be accessible at the route `/move/[name]`, where `[name]` is the name of the move.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+            </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                This page should display detailed information about the move, including its type, power, accuracy, and description. This data must be fetched on the server side using `getServerSideProps` like the Pokemon detail page!
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+               There should be a button for the user to navigate back to the *previous page*.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Styling</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>10</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+               All styling should be done using Tailwind CSS. It will be up to you to style the pages - make it look nice! Like A01, this assignment will have a graded design component. Extra credit will be given to exceptional designs. This is a great place to practice Tailwind!
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Stretch Goals and Extra Credit</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>15</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                You must all choose at **least one item from the list below to implement in your website**. *One of these will be graded*. You can also add *one more optional item* - this will be graded as extra credit! (Sorry, we will limit this extra credit to only one additional stretch goal):
+                * Explore [this page](https://msikma.github.io/pokesprite/). Using network requests, on the Home Page, display the Pokemon's small sprite icon for easy identification. 
+                * Implement dark mode styling support on the site! Read more about this here: [Tailwind dark mode](https://tailwindcss.com/docs/dark-mode). The style should change when dark mode is active.
+                * On the home page, below the paginated list of Pokemon, also include a paginated list of items that can be used in game. These items should be fetched from the PokeAPI's item endpoint: `https://pokeapi.co/api/v2/item`. To make this work, you may have to create a custom data model in the `web/data/models` directory.
+                * *You can also create an item detail page. This page should be accessible at the route `/item/[name]`, where `[name]` is the name of the item. This page should display detailed information about the item, including its cost, effect, and description. Doing so will count as the extra credit item (so, completing both the paginated list of items and the detail page together count as 1 stretch goal + 1 extra credit item).*
+                * Implement the ability to star certain Pokemon as "favorites". These favorites should be stored using `localStorage` (allowing it to persist between page refreshes). To learn more about how to use `localStorage`, read [this](https://www.w3schools.com/jsref/prop_win_localstorage.asp)! You can load favorites when the page loads and save them when the user clicks a button to favorite a Pokemon. The favoriting feature should be on the `Home Page`.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                10
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+               Extra credit for completing one additional (two total) items above.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right" colSpan={2}>
+                5
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0 bg-muted">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>Deployment</strong>
+
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                <strong>10</strong>
+            </td>
+        </tr>
+        <tr className="m-0 border-t p-0">
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                Your website is deployed using Vercel and is accessible at a URL with the format: `https://a04-wordle-yourname.vercel.app`.
+            </td>
+            <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
+                10
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment. **However, there are a few additional steps (noted with "new!")**:
+
+1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. **(NEW!)** Under Framework Preset, make sure to select "Next.js".
+6. **(NEW!)** Under "Root Directory", press *Edit*. Then, select `web` and press *Continue*. The Root Directory should now say `web`.
+7. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues!
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a05-pokedex-yourname.vercel.app`.
