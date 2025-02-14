@@ -4,6 +4,16 @@ import { Youtube } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ScheduleListing(props: {item: ScheduleItem}) {
+
+    const moduleColor = (module: string) => {
+        if (module === '1') return 'bg-slate-200 text-[#2c3036]';
+        if (module === '2') return 'bg-[#c9daf8] text-[#2c3036]';
+        if (module === '3') return 'bg-[#dfdcec] text-[#2c3036]';
+        if (module === 'M') return 'bg-slate-600 text-slate-100';
+
+        return 'bg-slate-200 text-slate-600'
+    }
+
     return (
         <div className="flex flex-row w-full sm:items-center mb-3">
             {/* Identity Section */}
@@ -11,8 +21,8 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
                 {/* Date Section */}
                 <div className="flex flex-row w-[116px]">
                     <p className="text-sm leading-6">{ props.item.date }</p>
-                    <div className=' bg-slate-200 ml-auto pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
-                        <p className="text-slate-600 text-sm">{ props.item.code }</p>
+                    <div className={`${moduleColor(props.item.module)} ml-auto pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg`}>
+                        <p className="text-sm">{ props.item.code }</p>
                     </div>
                     {/* <p className="text-sm ml-auto">{ props.item.code }</p> */}
                 </div>

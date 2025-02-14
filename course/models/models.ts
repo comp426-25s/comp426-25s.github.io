@@ -9,6 +9,7 @@ export interface ScheduleItem {
     synopsis: string | null;
     youtubeUrl: string | null;
     slidesUrl: string | null;
+    module: string;
 }
 
 export interface AssignmentItem {

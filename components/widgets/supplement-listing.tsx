@@ -12,7 +12,7 @@ export default function AssignmentListing(props: {item: SupplementItem}) {
                     
                     {props.item.code.startsWith("S") ? (
                         <div className=' bg-[#dfdcec] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
-                            <p className="text-[#374A3D] text-sm">{ props.item.code }</p>
+                            <p className="text-[#2c3036] text-sm">{ props.item.code }</p>
                         </div>
                     ) : (
                         <div className=' bg-[#F1E1E9] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>

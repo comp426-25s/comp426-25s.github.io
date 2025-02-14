@@ -88,9 +88,35 @@ export default function Home() {
       </div>
       <Assignments showOnlyUpcomingAssignments={showOnlyUpcomingAssignments} />
 
-      <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
+      <h2 className="mt-8 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight first:mt-0">
         Course Schedule
       </h2>
+      <div className="flex flex-row flex-wrap gap-4 items-center border-b pb-2 mb-3">
+        <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-slate-200 rounded-full'></div>
+          <p className='text-sm'>Fundamentals</p>
+        </div>
+        <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-[#c9daf8]  rounded-full'></div>
+          <p className='text-sm'>React</p>
+        </div>
+        <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
+          <p className='text-sm'>Next.js</p>
+        </div>
+        {/* <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
+          <p className='text-sm'>Backend (Supabase)</p>
+        </div>
+        <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
+          <p className='text-sm'>Design</p>
+        </div>
+        <div className='flex flex-row gap-2 items-center'>
+          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
+          <p className='text-sm'>Advanced / Misc</p>
+        </div> */}
+      </div>
       <Schedule />
 
       <h2 className="mt-8 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0">
