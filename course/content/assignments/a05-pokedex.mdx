@@ -101,10 +101,13 @@ As you can see, there are many benefits to using React Query. To fetch data from
 
     const fetcher = async (): { verify: boolean } => {
         const response = await fetch('https://a04-wordle-api/verify/\$\{word\}');
-        return response.json();
+        return await response.json();
     }
 
-    const { data, error, isLoading } = useQuery(['my-data', word], fetcher);
+    const { data, error, isLoading } = useQuery({
+        queryKey: ['wordle', word],
+        queryFn: fetcher
+    });
 
     return (
         <div>
@@ -123,8 +126,8 @@ As you can see, there are many benefits to using React Query. To fetch data from
 </div>
 
 As you can see, the `useQuery` hook takes two arguments:
-- A dependency array. The first element of this array is a *key* that is used to internally identify the data. This assists with caching and invalidation, all features that React Query takes care of behind the scenes. Any items afterwards in this array are used as *dependencies* for the query - similar to `useEffect`! If any of these dependencies change, the fetching function will re-run and data will refresh. In the example above, if the `word` state changes, the query will re-run.
-- A function that fetches the data. This function is an asynchronous function that returns a promise. The function should return the data that you want to fetch. In the example above, the function fetches data from the external API we used in A04!
+- `queryKey`: A dependency array. The first element of this array is a *key* that is used to internally identify the data. This assists with caching and invalidation, all features that React Query takes care of behind the scenes. Any items afterwards in this array are used as *dependencies* for the query - similar to `useEffect`! If any of these dependencies change, the fetching function will re-run and data will refresh. In the example above, if the `word` state changes, the query will re-run.
+- `queryFn`: A function that fetches the data. This function is an asynchronous function that returns a promise. The function should return the data that you want to fetch. In the example above, the function fetches data from the external API we used in A04!
 
 This hook returns an object with three fields, which we can destruture into three variables using [TypeScript's *destructuring* syntax](https://basarat.gitbook.io/typescript/future-javascript/destructuring#object-destructuring):
 - `data`: The data fetched from the API. This will be `undefined` if the data has not been fetched yet.
