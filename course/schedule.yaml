@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L13
+  date: Mon Feb 17
+  title: Intro to Next.js + Server Side Rendering
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1KjDL9F14u6Xw5rIMBnrbOwZRg6UZrdkf20Ux8HRgs9A/edit?usp=sharing
+  module: '3'
+
 - code: L12
   date: Fri Feb 14
   title: Routing and Architectures (MPAs vs. SPAs)
