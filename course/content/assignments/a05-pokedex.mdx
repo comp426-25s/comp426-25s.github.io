@@ -1,4 +1,4 @@
-# A05: Pokedex
+# A05: Pokédex
 
 ## Synopsis
 
@@ -268,7 +268,7 @@ The rubric below explains the expectations for each of these pages, point values
         </tr>
         <tr className="m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-                The home page should display a list of Pokemon, with each Pokemon displaying at least its name.
+                The home page should display a list of Pokemon, with each Pokemon displaying at least its name. You will want to make sure each Pokemon's name is nicely displayed using proper cased text and no hyphens.
 
                 The list should be paginated - meaning that at most 50 Pokemon should be shown on the home page at a time. Add buttons (or some other form of input) so that the user can navigate between pages of Pokemon. For example, if the user is on page 1, they should be able to click a button to go to page 2 and see the next 50 pages of Pokemon. The user should be able to navigate to previous pages as well.
 
@@ -311,7 +311,7 @@ The rubric below explains the expectations for each of these pages, point values
             </tr>
         <tr className="m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
-                This page should display detailed information about the Pokemon, including its image, typing, stats, the moves it can learn, a description, and the Pokemon it evolved from, if any. You will need to use **BOTH** the `/pokemon/{name}` and `/pokemon-species/{name}` endpoints to get all of this information!
+                This page should display detailed information about the Pokemon, including its image, typing, stats, the moves it can learn, a description, and the Pokemon it evolved from, if any. You will need to use **BOTH** the `/pokemon/{name}` and `/pokemon-species/{name}` endpoints to get all of this information! Note: if the description (flavor text) does not render properly on your browser, consider using the `formatFlavorText` function in the `/utils` directory!
 
                 This data must be fetched on the server side using `getServerSideProps` as shown in class! All of the "detail pages" will load data this way. This enables the user to instantly see the data about the Pokemon they clicked on, without having to wait for the data to load on the client side. The data fetched on the server side should be passed to the component as props.
 
@@ -403,7 +403,7 @@ The rubric below explains the expectations for each of these pages, point values
         <tr className="m-0 border-t p-0">
             <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 You must all choose at **least one item from the list below to implement in your website**. *One of these will be graded*. You can also add *one more optional item* - this will be graded as extra credit! (Sorry, we will limit this extra credit to only one additional stretch goal):
-                * Explore [this page](https://msikma.github.io/pokesprite/). Using network requests, on the Home Page, display the Pokemon's small sprite icon for easy identification. 
+                * Explore [this page](https://msikma.github.io/pokesprite/). On the Home Page, display the Pokemon's small sprite icon for easy identification. You should ***not*** be downloading any of these image files into your project to make this work!
                 * Implement dark mode styling support on the site! Read more about this here: [Tailwind dark mode](https://tailwindcss.com/docs/dark-mode). The style should change when dark mode is active.
                 * On the home page, below the paginated list of Pokemon, also include a paginated list of items that can be used in game. These items should be fetched from the PokeAPI's item endpoint: `https://pokeapi.co/api/v2/item`. To make this work, you may have to create a custom data model in the `web/data/models` directory.
                 * *You can also create an item detail page. This page should be accessible at the route `/item/[name]`, where `[name]` is the name of the item. This page should display detailed information about the item, including its cost, effect, and description. Doing so will count as the extra credit item (so, completing both the paginated list of items and the detail page together count as 1 stretch goal + 1 extra credit item).*
@@ -462,3 +462,23 @@ You will submit your final website to Gradescope. Before submitting, make sure t
 
 1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
 2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a05-pokedex-yourname.vercel.app`.
+
+
+## Common Problems / FAQ
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger><strong>I am having trouble with Next's hot-reloading feature on my computer - it is really slow!</strong></AccordionTrigger>
+    <AccordionContent>
+      We have been tracking this problem and believe it may be due to the Docker container used on Windows computers. For now, feel free to just run the project on your local machine without the Docker container. If you are still having issues, please come to office hours!
+    </AccordionContent>
+  </AccordionItem>
+    <AccordionItem value="item-2">
+    <AccordionTrigger><strong>I want to add external images to my site, but I am getting a network error when doing so. How can I fix this?</strong></AccordionTrigger>
+    <AccordionContent>
+      We found that you may need to edit the `next.config.ts` file to allow for external images to be loaded. You can do this, add more items in the `images - remotePatterns` list in the config file. 
+    </AccordionContent>
+  </AccordionItem>
+
+</Accordion>
+

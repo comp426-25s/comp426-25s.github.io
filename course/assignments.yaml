@@ -65,3 +65,9 @@
   title: Wordle
   url: assignments/a04-wordle
   past: false
+
+- code: A05
+  due: Fri Feb 28 @ 11:59PM
+  title: Pokédex
+  url: assignments/a05-pokedex
+  past: false
