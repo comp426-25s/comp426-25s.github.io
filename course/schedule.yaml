@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L14
+  date: Wed Feb 19
+  title: Next.js Pages Router + Server Side Props
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1fLhv-2HuFjvvCdd1kS7udhtpSyXpNSFV954FCSIJnLE/edit?usp=sharing
+  module: '3'
+
 - code: L13
   date: Mon Feb 17
   title: Intro to Next.js + Server Side Rendering
