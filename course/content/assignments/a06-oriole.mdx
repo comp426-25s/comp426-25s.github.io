@@ -1,0 +1,312 @@
+# A06: Oriole
+
+## Synopsis
+
+In this assignment, you will be implementing the entire Supabase backend for a **novel social media app - Oriole**! Users can log in / sign up, write posts, upload images, like posts, follow other users, and more. You will use many of Supabase's most powerful backend features, including its database, authentication, and storage. You will also get the chance to use Supabase database functions and triggers.
+
+The app itself will be built using Next.js, deployed live to the internet via Vercel. You will get the chance to connect your Supabase backend to your Next.js project and see your app come to life! You will also implement *infinite scrolling* on the frontend, a hallmark feature of many social media apps.
+
+## Prerequisites
+
+This is our first assignment with Supabase. If you have not already, make sure that you have signed up for a free account at [Supabase.io](https://supabase.io/). Once you have signed up for an account, you will be ready to move to the next steps.
+
+If you have not already, please install the Docker DevContainers extension for VS Code. This will allow you to open this project in a Docker DevContainer.
+
+Install here: [Docker DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+## Getting Started with Supabase - Creating a New Project
+
+Now that you have a Supabase account, if you are new to Supabase, you will be prompted to create a new organization. You can name your organization anything you like. Make sure that your plan is set to the Free tier, as shown below:
+
+![Supabase Free Plan](/images/a06/organization.png)
+
+Press "Create organization". Once you have an organization,
+you can create a new project. Name this project anything you like, but we recommend including `a06` so it is easy to read. Next, make sure to generate a database password and keep this saved somewhere! You will need it in the submission step.
+
+**Very important: Make sure you set your region to `East US (North Virginia)`!** The location of your server will greatly affect latency and performance. Ideally, you want your server to be as close to your users as possible. Since we are at UNC, the Virginia server is the closest to us.
+
+![Project Configuration](/images/a06/project.png)
+
+Now that you have created a project, you will be taken to the project dashboard. On the first load, it might take a few minutes to entirely initialize and set up your project. Once it is ready, we can begin configuring the features of our backend!
+
+## Setting Up Supabase Authentication
+
+The next step after creating our project is to configure authentication. This will allow users to sign up and log in to our app. On the left sidebar, click on "Authentication". You will now see an empty table of users. As users sign up, they will be added to this table.
+
+### Configure Email Sign-in Method
+
+Navigate to "Sign In / Sign Up" on the sidebar under "Configuration". This will allow you to configure the sign-in methods for your app. This page should look like this by default:
+
+<div className="py-3">
+    ![Auth Settings Home](/images/a06/auth-home.png)
+</div>
+
+On this page, you will see the section for "Auth Providers". This allows us to specify the methods by which our user can register. You are able to enable multiple methods such as logging in with Google or GitHub - but for this assignment, we will only be using **email and password**. This should be enabled by default, but we need to modify one setting. Press on "Email" in the list of providers and you should see some options. Make sure to **disable** "Confirm email" as shown below:
+
+This will allow users to sign up without needing to confirm their email address and will make it easier while we develop Oriole.
+
+<div className="py-3">
+    ![Auth Email Settings](/images/a06/auth-settings.png)
+</div>
+
+### Configure Database Functions and Triggers
+
+As you saw on the home page, Supabase stores a table of users for us! However, this table is *read-only* and only contains information such as the user's email and ID. In Oriole, we will want our users to be able to have additional information such as a *name*, *@ handle*, and more. 
+
+To do this, we can create a **database table** called **`profile`** to store this information and connect Supabase's built-in read-only users table to it!
+
+This setup is a bit complicated but is required to connect the `profile` and `auth.user` tables together, so we will do this step by step.
+
+Supabase has two powerful features called **database functions** and **database triggers** that allow us to run *custom SQL code (written in a function)* on the database *when some event (trigger) happens*.
+
+Whenever a user signs up for Oriole, we want to create a new row in the `profile` table for them that references their user ID, name, and handle. The name and handle will be provided as data when the user signs up in our code.
+
+To set up database functions and triggers, we need to run some custom SQL. We will do this in the Supabase SQL editor. *This should be the only time we need to touch raw SQL in this assignment!*
+
+First, navigate to the SQL editor by clicking on the "SQL Editor" tab on the left sidebar. You should see a screen like this:
+
+<div className="py-3">
+    ![SQL Editor](/images/a06/sql-editor.png)
+</div>
+
+Now, paste in the following SQL code. Read through the code below and try to make sense of its *functionality* (even if you do not entirely understand the syntax - that is okay, you do not need to know SQL!):
+
+<div className=" my-6">
+<Code
+    code=
+{`-- Create a profile table, establish the relationship between
+-- the profile table and the auth.user table, and set up the
+-- postgres function and trigger to create a new profile row
+-- every time a new user signs up.
+create table public.profile (
+  id uuid not null references auth.users on delete cascade,
+  name text,
+  handle text,
+  avatar_url text,
+  primary key (id)
+);
+
+-- Create a function that inserts a new row into the profile
+-- based on a new user's data.
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+  insert into public.profile (id, name, handle)
+  values (new.id, new.raw_user_meta_data ->> 'name', new.raw_user_meta_data ->> 'handle');
+  return new;
+end;
+$$;
+
+-- Create a trigger that runs the above function whenever a new
+-- user gets signed up.
+create or replace trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
+`}
+    language="sql"
+    filename="SQL to set up the profile table, function, and trigger"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Once you paste in your SQL code into the editor, press the green "Run" button in the bottom right. You should see the following output:
+
+<div className="py-3">
+    ![SQL Editor Success](/images/a06/sql-editor-success.png)
+</div>
+
+Now, navigate to the **"Database"** tab on the sidebar. Make sure "Schema Visualizer" is selected under *Database Management*. This allows you to see a nice diagram of all of your created table and relationships in your database. You should see a new table called `profile` that is connected to the `auth.users` table like so:
+
+<div className="py-3">
+    ![Profile Schema](/images/a06/profile-schema.png)
+</div>
+
+Now, navigate to the "Functions" tab under "Database Management". You should see the `handle_new_user` function that was generated with the above SQL:
+
+<div className="py-3">
+    ![DB Functions](/images/a06/functions.png)
+</div>
+
+Finally, navigate to the "Triggers" tab under "Database Management". There will likely be no triggers showing up at first. In the dropdown, change the schema to `auth`. You should now see the `on_auth_user_created` trigger that was generated with the above SQL:
+
+<div className="py-3">
+    ![DB Triggers](/images/a06/triggers.png)
+</div>
+
+Schemas are a way to organize tables in your Supabase database into logical groups. Supabase creates many schemas for you, including `auth` that it manages for you. Tables that you add to your database will always be placed in the `public` schema.
+
+**Great - all of the authentication infrastructure for Oriole is now set up!** It is now time to set up the rest of your database tables.
+
+## Setting Up Oriole's Database
+
+### Oriole's Database Schema
+
+Now that you have configured authentication, we will be setting up the **database tables** necessary to store all of the data for Oriole! We will create three tables:
+* **`post`**: Stores the posts that users make.
+* **`like`**: Establishes a many-to-many relationship between the `post` table and `profile` table, allowing users to like multiple posts (and posts to be liked by multiple users).
+* **`follow`**: Establishes a many-to-many relationship between the `profile` table and itself, allowing users to follow multiple other users (and be followed by multiple users).
+
+**Ultimately, the fields (and their properties) that you will implement are shown below in this schema diagram:**
+
+<div className="py-3">
+    ![Oriole Schema](/images/a06/oriole-schema.png)
+</div>
+
+The dotted lines in this diagram represent relationships. The relationships are further codified below:
+
+* `post.author_id -> profile.id`: Each post is authored by a single user.
+* `like.post_id -> post.id`: Each like is associated with a single post.
+* `like.profile_id -> profile.id`: Each like is associated with a single user.
+* `follow.follower_id -> profile.id`: Each *follower* is associated with a single user.
+* `follow.following_id -> profile.id`: Each *following* is associated with a single user.
+
+<Alert className="my-6">
+    <AlertTitle className="font-semibold text-base">Note about Following vs. Follower</AlertTitle>
+    <AlertDescription>
+        The terminology between *following* and *follower* might be a bit confusing, so I want to clarify it here.
+        
+        For example, if `@ajaygandecha` follows `@krisjordan`, `@ajaygandecha` is the ***follower*** and `@krisjordan` is the account that `@ajaygandecha` is ***following***.
+        
+         When you *follow* someone, you are the *follower* and they are the *following*. This is because you are following their posts and they are being followed by you. This is a common convention in social media apps.
+    </AlertDescription>
+</Alert>
+
+### Creating Database Tables
+
+Your first main task is to create the `post`, `like`, and `follow` tables in your Supabase database. You will create these tables in the **"Table Editor"** tab on the sidebar. Ensure that you are in the `public` schema and press `+ New Table` to create a new table. From here, you can create the names of your tables. ***Make sure they match exactly as described above - the names should not be plural!***
+
+Also, **make sure you *uncheck*** "Enable Row Level Security (RLS)" for now. We can add this later and keeping it on might cause headaches when developing.
+
+For each table, you will need to add the columns as described in the schema diagram above. You can add columns by pressing the `Add Column` button. **Make sure to set the correct data type for each column.** For example, the `post` table should have a `text` column for the `content` of the post.
+
+*Also, if a column is marked with a "key" symbol in the image above, that indicates that the column is a primary key for the table. Make sure to set the primary key for each table.*
+
+*Hint: There should be one primary key in the `post` table and two primary keys in both the `like` and `follow` tables. All primary key columns should have the type set to UUID. Keep the default value for all primary key columns as `gen_random_uuid()`*. 
+
+Once you have added all of the columns in the table, you can establish foreign keys by pressing "Add foreign key relation", then selecting the appropriate table and column. For example, in the `post` table, you will want to establish a foreign key relationship between `author_id` and `profile.id`.
+
+**Below is an example of the process of creating a `sample` table. This table as a primary key, foreign key, and regular field.** This should help you check your work as your create your tables!
+
+<div className="py-3">
+    ![Sample Table](/images/a06/sample-table.png)
+</div>
+
+I recommend creating the `post` table first.
+
+Once you are done, check your schema diagram and ensure that it matches with the one in the image above!
+
+## Configuring Supabase Storage
+
+The last step is to configure Supabase storage! This will allow us to store images that users upload to Oriole. These will include both images in each post as well as user avatars. These images are stored into *buckets* for easy organization. We need to create two buckets -- **`images`** and **`avatars`**.
+
+Navigate to the "Storage" tab on the sidebar. Press on "New Bucket" to create a bucket. Create a bucket called `images` and another called `avatars`. ***These names must be exact!*** Make sure to also checkmark "Public bucket" like so:
+
+<div className="py-3">
+    ![Sample Bucket](/images/a06/bucket.png)
+</div>
+
+We now need to configure our *policies* for these buckets to ensure that anyone can read and write to them. *Note that this is NOT a best practice - but, for the sake of this assignment, we will keep it simple and have open access to these buckets.*
+
+Navigate to the **"Policies"** tab under "Configuration" on the Storage page. You should see a screen like this:
+
+<div className="py-3">
+    ![Storage policies](/images/a06/storage-policies.png)
+</div>
+
+For ***BOTH*** buckets, press the `New policy` button. Then, press `For full customization` to create a policy from scratch. 
+
+Give the policy a name, then checkmark ***all*** allowed operations. Again, this is not best practice - do not do this in a real deployed app - but, we want to keep things a bit simple for now. Selecting these options should result in this:
+
+<div className="py-3">
+    ![New policy](/images/a06/new-policy.png)
+</div>
+
+Press `Review` and then `Save policy`. Do this for **BOTH** buckets, and you should see this when you are done:
+
+<div className="py-3">
+    ![Storage policies done](/images/a06/storage-policies-done.png)
+</div>
+
+**Great work!!** You have now set up all of the necessary backend infrastructure for Oriole. You have set up authentication, database tables, and storage. Now, it is time to connect Oriole's frontend to the backend you set up!
+
+## Getting Started on the Frontend
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here](). *This is an indidivual assignment so that everyone is able to practice using the tools we have introduced recently in class*.
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. If you have many detected changes in the Git tab of VSCode after the container builds, you may *clear all changes*. 
+7. _**Remember to `cd web`!**_
+8. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+9. You can now run the project by running `npm run dev` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:3000` in your browser. 
+
+## Exploring Oriole
+
+The entire frontend and project structure for Oriole has been set up for you, including the design and layout of the app! This app uses **[shadcn/ui](https://ui.shadcn.com)**, a terrific frontend design framework for Next.js. You will be learning how to use this for yourself in the Design part of the course - but for now, you can explore the codebase and see how shadcn components are implemented throughout the app! Components that come from shadcn directly are placed in the `/components/ui` folder. I designed the other components and pages for you.
+
+Oriole has the following pages:
+- **Login page (`/login`)**: When the user is not logged in, they will see this page. They can log in here or sign up instead.
+- **Sign up page (`/signup`)**: When the user is not logged in, they will see this page. They can sign up here or log in instead.
+- **Home page (`/`)**: This is where the user will see their feed and where they can also post for themselves!
+- **Profile page (`/profile/:id`)**: This is where the user can see the profile and posts of another user. They can also follow or unfollow them here. If the user is viewing their own profile, they can change their avatar image.
+- **Post page (`/post/:id`)**: This is where the user can see a single post in detail.
+
+Oriole also has built-in light and dark mode support, which you can toggle at the top right corner.
+
+I recommend spending at least 20 minutes exploring the codebase and understanding how the pages are structured! Each page includes various features of React and Next.js that we have learned in class, and I think it will be valuable to see these features in a larger, more complex codebase.
+
+## Connecting Oriole to Supabase
+
+The last step is to connect Oriole to the Supabase backend you set up! First, check out the `/utils/supabase` folder. This folder contains a subfolder called `clients` which contains two helper functions - `createSupabaseComponentClient()` and `createSupabaseServerClient()`. These functions create a Supabase client object that we can use to access Supabase! We need to differentiate between these two clients because, since Next.js can run code and fetch data on *both the client-side and the server-side*, we need to ensure that we are using the correct client in the correct context. Check out these files and the comments inside for more information!
+
+In order for our Supabase client to connect to our Supabase project correctly, we need to establish a **`.env.local`** file in the `/web` directory. Go to [this URL](https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=pages) and complete **JUST step 2!** This will create a `.env.local` file with the correct environment variables and values to connect to your Supabase project. Make sure to replace the URL and anon key with the correct values from your Supabase project as shown in Step 2 on that page.
+
+## Implementing Functionality
+
+Since the frontend and most of the frontend functions have been handled for you, the main code you need to complete for A06 will be:
+- Adding the functionality for *logging in* and *signing up* users.
+    1. Complete the `TODO` items in the `login.tsx` and `signup.tsx` pages. To do this, you might need to refer to Part 4 of [these docs](https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=pages) for an example on how to set up the login and signup functions.
+- Complete all of the Supabase queries in `/utils/supabase/queries` so that our app can interact with the Supabase database. ***This is the bulk of the assignment!***
+    1. Complete the `TODO` items in `/utils/supabase/queries/post.ts` and `/utils/supabase/queries/profile.ts`. These files contain all of the queries necessary to interact with the `post` and `profile` tables in your Supabase database. You will need to complete these queries to allow users to post, like posts, follow users, and more. The functions, descriptions on expectations, and expected return types are all provided in the file. Pay careful attention to these and the comments in the file to understand what you need to do. You should frequent the Supabase documentation for working with the database [here](https://supabase.com/docs/reference/javascript/select) to learn the necessary functions to write these queries.
+    2. NOTE: ***NEVER*** modify the files in the `/utils/supabase/models` folder! Doing so might break the frontend.
+    3. As you develop these functions, you can test them incrementally to see if you are getting the output you are expecting in the `testing.tsx` page. For example, you can call `getPosts()` in the `useEffect` hook to see if you are getting the posts you expect.
+- Implement *infite scrolling* for data on the home page and the profile feed page using `useInfiniteQuery`. This will allow users to scroll through posts infinitely without needing to click a "Load More" button and is a hallmark feature for most social media apps.
+    1. Complete the `TODO` item in `index.tsx`. The comments in the file will guide you on what you need to do.
+- Double check all work is completed by searching for `TODO` workspace-wide! If it is all completed, test the implementation on the frontend. You can test the login and signup functionality by creating a new account and logging in. You can test the posting functionality by creating a new post. You can test the liking functionality by liking a post. You can test the following functionality by following a user. You can test the infinite scrolling functionality by scrolling through the home page and profile feed page.
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment. **However, there are a few additional steps (noted with "new!")**:
+
+1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. Under Framework Preset, make sure to select "Next.js".
+6. Under "Root Directory", press *Edit*. Then, select `web` and press *Continue*. The Root Directory should now say `web`.
+7. **(NEW!)** Under "Environment Variables", you will need to add the environment variables from your `.env.local` file. You can do this by pressing "New Variable" and adding each variable and value. Make sure to add all of the variables from your `.env.local` file.
+8. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues!
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a06-oriole-yourname.vercel.app`.
+
+
