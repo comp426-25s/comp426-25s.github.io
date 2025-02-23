@@ -64,7 +64,7 @@
   due: Wed Feb 19 @ 11:59PM
   title: Wordle
   url: assignments/a04-wordle
-  past: false
+  past: true
 
 - code: A05
   due: Fri Feb 28 @ 11:59PM
