@@ -71,3 +71,9 @@
   title: Pokédex
   url: assignments/a05-pokedex
   past: false
+
+- code: R07
+  due: Fri Feb 28 @ 11:59PM
+  title: Supabase JS Client
+  url: readings/r07-supabase-client
+  past: false

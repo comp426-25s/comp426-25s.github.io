@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L15
+  date: Mon Feb 24
+  title: Intro to Relational Databases
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1FDYhO_bjvSHwsWCdyqiEVh6G3a6ihLq1yXILhlJuNvM/edit?usp=sharing
+  module: '4'
+
 - code: L14
   date: Wed Feb 19
   title: Next.js Pages Router + Server Side Props
