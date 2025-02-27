@@ -199,6 +199,18 @@ I recommend creating the `post` table first.
 
 Once you are done, check your schema diagram and ensure that it matches with the one in the image above!
 
+## Adding Data
+
+Now that you have created your tables, we need to add some sample data to them. This will ensure that when you start writing queries for your app, you have some data to work with.
+
+First, I recommend creating some users. You can do this in the **Authentication** tab. Press *Add User*, then *Create New User*. You can create a user with any email and password you like.
+
+This should automatically create a row in the `profile` table for you as well, since we set up the trigger above. You can check this by navigating to the **"Table Editor"** tab on the sidebar and selecting the `profile` table. You should see a new row with the user ID and email you created. Now, add a name and handle to this user!
+
+Repeat this process until you have a few fake users. Then, add some post data by navigating to the `post` table in the **"Table Editor"** tab on the sidebar. Press `Insert Row` and add some sample posts. Make sure to set the `author_id` to the ID of one of the users you created above. 
+
+Also add some data for likes and follows!
+
 ## Configuring Supabase Storage
 
 The last step is to configure Supabase storage! This will allow us to store images that users upload to Oriole. These will include both images in each post as well as user avatars. These images are stored into *buckets* for easy organization. We need to create two buckets -- **`images`** and **`avatars`**.
