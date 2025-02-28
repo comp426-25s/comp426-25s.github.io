@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L17
+  date: Fri Feb 28
+  title: Authentication
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1cDhS9C6FHuVCdqK13mTehzV7b3dBPAlX_pqlBFm4rtw/edit?usp=sharing
+  module: '4'
+
 - code: L16
   date: Wed Feb 26
   title: Intro to Supabase

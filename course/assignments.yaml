@@ -77,3 +77,9 @@
   title: Supabase JS Client
   url: readings/r07-supabase-client
   past: false
+
+- code: A06
+  due: Fri Mar 7 @ 11:59PM
+  title: Oriole
+  url: assignments/a06-oriole
+  past: false
