@@ -1,4 +1,11 @@
 # Contains the course schedule.
+- code: L18
+  date: Mon Mar 3
+  title: Storage and Permissions
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1AXcmrEYMTFRawtTzcnqNeiJ2oRrYsiOvTlAV3LRFI1A/edit#slide=id.g21202c7d859_0_10
+  module: '4'
 
 - code: L17
   date: Fri Feb 28
