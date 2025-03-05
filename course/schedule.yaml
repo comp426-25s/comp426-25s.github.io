@@ -1,4 +1,12 @@
 # Contains the course schedule.
+- code: L19
+  date: Wed Mar 5
+  title: Database Features Potpourri
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1coK81Tlz85bxCZ35jlivqmvVO6entWvNfMzRbL79pOQ/edit?usp=sharing
+  module: '4'
+
 - code: L18
   date: Mon Mar 3
   title: Storage and Permissions
