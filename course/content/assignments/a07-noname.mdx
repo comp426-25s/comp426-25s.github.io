@@ -23,7 +23,9 @@ In the last assignment, you created a Supabase account and organization. For A07
 
 Go to your Supabase dashboard and create a new organization. You can name your organization anything you like. Make sure that your plan is set to the Free tier, as shown below:
 
-![Supabase Free Plan](/images/a07/organization.png)
+<div className="py-3">
+    ![Supabase Free Plan](/images/a07/organization.png)
+</div>
 
 Press "Create organization". 
 
@@ -32,7 +34,9 @@ create a new account to bypass this restriction or let your partner create the o
 
 Once you have an organization, you will want to invite your partner to it. On the sidebar, press your newly created organization. Navigate to the "Teams" tab and invite your partner. This will allow them to see all of the projects for that organization.
 
-![Supabase Invite](/images/a07/invite.png)
+<div className="py-3">
+    ![Supabase Invite](/images/a07/invite.png)
+</div>
 
 
 Now, you can create a new project! Name this project anything you like, but we recommend including `a07` so it is easy to read. Next, make sure to generate a database password and **keep this saved somewhere**! You will actually need this password in the next step.
@@ -68,15 +72,145 @@ This assignment utilizes all of the Supabase features we have discussed so far -
 
 **Only one team member has to complete these steps!**
 
-# WORK ON THIS!
+First, you will want to `cd` to the root folder of your project - **NOT** `/web`! Check to ensure that you are in the right place before continuing.
 
-You will utilize the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) to connect to your Supabase project.....
+First, log into Supabase from your CLI. You can do this by running the following command in the terminal:
+
+<div className=" my-6">
+<Code
+    code=
+{`npx supabase login`}
+    language="bash"
+    filename="Supabase Login Command"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+You should see the following prompt:
+
+`Hello from Supabase! Press Enter to open browser and login automatically.`
+
+Press the Enter key and you will be taken to a browser window where you can log in to your Supabase account. Once you have logged in, copy and paste the verification code into the terminal. This should log you into the Supabase CLI.
+
+Next, you will want to connect to your Supabase project. You can do this by running the following command in the terminal. Replace `<project-id>` with the project ID of your Supabase project. You can find this in the URL of your project dashboard: `https://supabase.com/dashboard/project/<project-id>`!
+
+<div className=" my-6">
+<Code
+    code=
+{`npx supabase link --project-ref <project-id>`}
+    language="bash"
+    filename="Supabase Link to Project"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Running this command will prompt you for your **database password**. Copy in the password that you set when creating the project. If you are unable to access this password or forgot it, you can reset it by going to the "Project Settings" tab at the bottom of the sidebar in your project, then press "Database" under the *Configuration* header. There is a place to reset the database password on this page.
+
+The `/supabase` folder contains a folder named `migrations`. The `migrations` folder contains SQL script that will set up all of the database tables and other Supabase settings for your project to match the expected configuration. To run these migrations, you can run the following command in the terminal:
+
+<div className=" my-6">
+<Code
+    code=
+{`npx supabase db push`}
+    language="bash"
+    filename="Supabase Perform Migration"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Once this succeeds, navigate back to your a07 Supabase project. You should see that the tables have been created and the database is set up correctly. The generated schema will look something like this:
+
+<div className="py-3">
+    ![Schema](/images/a07/schema.png)
+</div>
+
+## Setting Up Supabase Authentication
+
+The next step after creating our project is to configure authentication. This will allow users to sign up and log in to our app. On the left sidebar, click on "Authentication". You will now see an empty table of users. As users sign up, they will be added to this table.
+
+### Configure Email Sign-in Method
+
+Navigate to "Sign In / Sign Up" on the sidebar under "Configuration". This will allow you to configure the sign-in methods for your app. This page should look like this by default:
+
+<div className="py-3">
+    ![Auth Settings Home](/images/a06/auth-home.png)
+</div>
+
+On this page, you will see the section for "Auth Providers". This allows us to specify the methods by which our user can register. You are able to enable multiple methods such as logging in with Google or GitHub - but for this assignment, we will only be using **email and password**. This should be enabled by default, but we need to modify one setting. Press on "Email" in the list of providers and you should see some options. Make sure to **disable** "Confirm email" as shown below:
+
+This will allow users to sign up without needing to confirm their email address and will make it easier while we develop Oriole.
+
+<div className="py-3">
+    ![Auth Email Settings](/images/a06/auth-settings.png)
+</div>
+
+## Configuring Supabase Storage
+
+The last step is to configure Supabase storage. We need to create three buckets -- **`attachments`**, **`avatars`**, and **`server_images`**.
+
+Navigate to the "Storage" tab on the sidebar. Press on "New Bucket" to create a bucket. ***These names must be exact!*** Make sure to also checkmark "Public bucket" like so:
+
+<div className="py-3">
+    ![Sample Bucket](/images/a07/bucket.png)
+</div>
+
+We now need to configure our *policies* for these buckets to ensure that anyone can read and write to them. *Note that this is NOT a best practice - but, for the sake of this assignment, we will keep it simple and have open access to these buckets.*
+
+Navigate to the **"Policies"** tab under "Configuration" on the Storage page. For ***ALL 3*** buckets, press the `New policy` button. Then, press `For full customization` to create a policy from scratch. 
+
+Give the policy a name, then checkmark ***all*** allowed operations. Again, this is not best practice - do not do this in a real deployed app - but, we want to keep things a bit simple for now. Selecting these options should result in this:
+
+<div className="py-3">
+    ![New policy](/images/a07/policies.png)
+</div>
+
+Press `Review` and then `Save policy`. 
+
+**Great work!** You have now set up all of the necessary backend infrastructure.
+
 
 ## A07 Code Reading - Exploring NAMEHERE
 
 Now that you have the project set up, the first part of the project will be reading through the entire repository and answering some questions. This will help you understand the codebase and how everything is connected. A07 is the largest codebase you have seen so far and serves as a great example for how your final project might be structured and how Next.js + Supabase projects scale. 
 
-Open the GradeScope assignment titled "A07 Code Reading" and answer the questions. You may submit this together with your partner. The code reading is worth 15% of your overall project grade.
+Open the GradeScope assignment titled "A07 Code Reading" and answer the questions. You may submit this together with your partner. Your responses to the code reading is worth 15% of your overall project grade.
+
+## Connecting NAMEHERE to Supabase
+
+In order for our Supabase client to connect to our Supabase project correctly, we need to establish a **`.env.local`** file in the `/web` directory. Go to [this URL](https://supabase.com/docs/guides/auth/server-side/nextjs?queryGroups=router&router=pages) and complete **JUST step 2!** This will create a `.env.local` file with the correct environment variables and values to connect to your Supabase project. Make sure to replace the URL and anon key with the correct values from your Supabase project as shown in Step 2 on that page.
+
 
 ## Implementing Functionality
 
+Since the frontend and most of the Supabase database query functions have been handled for you, the main part of this assignment will be implementing the realtime functionality. There are two main parts to this:
+1. Complete all `[TODO]` items in `/web/pages/[serverId]/[channelId].tsx`. Most of the main Realtime functionality needs to be added here. You may test your functions by running the app locally and opening two different browsers, logged in with two different accounts, to see if items are updating in realtime.
+2. Complete the `[TODO]` item in `/web/utils/supabase/realtime/broadcast.ts`. This function is used for sending realtime alerts to other clients.
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment.
+
+1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. Under Framework Preset, make sure to select "Next.js".
+6. Under "Root Directory", press *Edit*. Then, select `web` and press *Continue*. The Root Directory should now say `web`.
+7. Under "Environment Variables", you will need to add the environment variables from your `.env.local` file. You can do this by pressing "New Variable" and adding each variable and value. Make sure to add all of the variables from your `.env.local` file.
+8. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues.
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a07-NAMEHERE-yourname.vercel.app`.
+
+## Reflection Questions
+
+The last part of the assignment will be to answer some reflection / extension questions. These questions are part of the GradeScope submission. You may submit this together with your partner. Your responses to the reflection questions are worth 10% of your overall project grade.
