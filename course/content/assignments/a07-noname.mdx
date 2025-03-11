@@ -1,0 +1,82 @@
+# A07: NAMEHERE
+
+## Synopsis
+
+In this assignment, you will be implementing the realtime functionality for NONAME - a casual chatting app based off of [Discord](https://discord.com)! Users can log in / sign up, join or create servers, send messages and images, and add reactions. As users in the same server / channel perform these actions, all other users get immediately notified and the UI updates in realtime.
+
+The app itself is built using Next.js and will be deployed live to the internet via Vercel. This is a rather large application! The UI and many of the helper functions have been set up for you. The completed code that we worked on for you also can serve as a good guide as an example for how you might want to set up / organize your final project.
+The app itself will be built using Next.js, deployed live to the internet via Vercel.
+
+You will complete this project with a partner. **IMPORTANT: Only one member** needs to submit to GradeScope - make sure that both partners are listed in the submission!
+
+## Prerequisites
+
+This is our first assignment with Supabase. If you have not already, make sure that you have signed up for a free account at [Supabase.io](https://supabase.io/). Once you have signed up for an account, you will be ready to move to the next steps.
+
+If you have not already, please install the Docker DevContainers extension for VS Code. This will allow you to open this project in a Docker DevContainer.
+
+Install here: [Docker DevContainers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+## Creating the Supabase Project
+
+In the last assignment, you created a Supabase account and organization. For A07, we will want to create a new organization that can be shared with your partner. This will allow you to both work on the same project and share the same database. **NOTE: Only ONE member needs to create an organization!**
+
+Go to your Supabase dashboard and create a new organization. You can name your organization anything you like. Make sure that your plan is set to the Free tier, as shown below:
+
+![Supabase Free Plan](/images/a07/organization.png)
+
+Press "Create organization". 
+
+> **IMPORTANT**: Supabase allows a maximum of two projects on the free tier that are active. If you have two projects already, you will need to *pause* one. **Please do NOT pause a06 - we are still grading!** In the worst-case scenario and you have two projects (a06 + one more) that are a necessity to keep running, you may either
+create a new account to bypass this restriction or let your partner create the organization. You may use your UNC email, for example, if you originally signed up using a personal Gmail or GitHub account. To pause a project, press on the project, navigate to "Project Settings" on the sidebar, then find the header "Pause project" and pause the project. It may take a few minutes for this to work.
+
+Once you have an organization, you will want to invite your partner to it. On the sidebar, press your newly created organization. Navigate to the "Teams" tab and invite your partner. This will allow them to see all of the projects for that organization.
+
+![Supabase Invite](/images/a07/invite.png)
+
+
+Now, you can create a new project! Name this project anything you like, but we recommend including `a07` so it is easy to read. Next, make sure to generate a database password and **keep this saved somewhere**! You will actually need this password in the next step.
+
+**Very important: Make sure you set your region to `East US (North Virginia)`!** The location of your server will greatly affect latency and performance. Ideally, you want your server to be as close to your users as possible. Since we are at UNC, the Virginia server is the closest to us.
+
+Now that you have created a project, you will be taken to the project dashboard. On the first load, it might take a few minutes to entirely initialize and set up your project. Once it is ready, we can begin configuring the features of our backend!
+
+## Getting Started on the Frontend
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here](). *This is a group assignment, so make sure that you accept the assigment in your team!*
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. If you have many detected changes in the Git tab of VSCode after the container builds, you may *clear all changes*. 
+7. _**Remember to `cd web`!**_
+8. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+9. You can now run the project by running `npm run dev` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:3000` in your browser. 
+
+
+## Set up Configuration using the Supabase CLI
+
+This assignment utilizes all of the Supabase features we have discussed so far - database, authentication, storage, and realtime. To make the setup process easier and to ensure that the queries we wrote for you work with your setup, we have provided the necessary files to quickly set up your Supabase project. This is located in `/supabase`.
+
+**Only one team member has to complete these steps!**
+
+# WORK ON THIS!
+
+You will utilize the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started) to connect to your Supabase project.....
+
+## A07 Code Reading - Exploring NAMEHERE
+
+Now that you have the project set up, the first part of the project will be reading through the entire repository and answering some questions. This will help you understand the codebase and how everything is connected. A07 is the largest codebase you have seen so far and serves as a great example for how your final project might be structured and how Next.js + Supabase projects scale. 
+
+Open the GradeScope assignment titled "A07 Code Reading" and answer the questions. You may submit this together with your partner. The code reading is worth 15% of your overall project grade.
+
+## Implementing Functionality
+
