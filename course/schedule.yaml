@@ -1,4 +1,13 @@
 # Contains the course schedule.
+
+- code: L20
+  date: Mon Mar 17
+  title: Websockets and Realtime
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/10j-0WlUk8vIz3S6OnoAAKJODVDKRlYcK36XJI0bbiu4/edit?usp=sharing
+  module: '4'
+
 - code: L19
   date: Wed Mar 5
   title: Database Features Potpourri
