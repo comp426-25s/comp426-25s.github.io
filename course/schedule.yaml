@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L21
+  date: Mon Mar 19
+  title: Final Projects
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1ZjGZCwRIXXDjR3XnoqMujnl77fWdj_bo65y4XqMipH8/edit#slide=id.g21202c7d859_0_10
+  module: '4'
+
 - code: L20
   date: Mon Mar 17
   title: Websockets and Realtime
