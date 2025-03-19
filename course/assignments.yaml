@@ -83,3 +83,9 @@
   title: Oriole
   url: assignments/a06-oriole
   past: false
+
+- code: A07
+  due: Fri Mar 28 @ 11:59PM
+  title: Alias
+  url: assignments/a07-alias
+  past: false

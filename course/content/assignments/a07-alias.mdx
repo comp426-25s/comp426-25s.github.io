@@ -49,7 +49,7 @@ Now that you have created a project, you will be taken to the project dashboard.
 
 To get started on this assignment, please complete the following steps:
 
-1. Accept the **GitHub Classroom** assignment [here](). *This is a group assignment, so make sure that you accept the assigment in your team!*
+1. Accept the **GitHub Classroom** assignment [here](https://classroom.github.com/a/XmbkKQ7l). *This is a group assignment, so make sure that you accept the assigment in your team!* If you team has not yet been created, please do so.
 2. Clone the repository to your local machine. You can either do this by:
 <div className="ml-3">
     * Using the CLI / Terminal: `git clone <repository-url>`
@@ -147,6 +147,45 @@ This will allow users to sign up without needing to confirm their email address 
     ![Auth Email Settings](/images/a06/auth-settings.png)
 </div>
 
+## Setting up Functions and Triggers
+
+Like in A06, we need a function and trigger to configure our `profile` table.
+
+First, navigate to the SQL editor by clicking on the "SQL Editor" tab on the left sidebar. Now, paste in the following SQL code. Read through the code below and try to make sense of its *functionality* (even if you do not entirely understand the syntax - that is okay, you do not need to know SQL!):
+
+<div className=" my-6">
+<Code
+    code=
+{`-- Create a function that inserts a new row into the profile
+-- based on a new user's data.
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+insert into public.profile (id, display_name, username)
+values (new.id, new.raw_user_meta_data ->> 'display_name', new.raw_user_meta_data ->> 'username');
+return new;
+end;
+$$;
+
+-- Create a trigger that runs the above function whenever a new
+-- user gets signed up.
+create or replace trigger on_auth_user_created
+after insert on auth.users
+for each row execute procedure public.handle_new_user();
+`}
+    language="sql"
+    filename="SQL to set up the profile table, function, and trigger"
+    lightTheme="one-light"
+    darkTheme="one-dark"
+/>
+</div>
+
+Once you paste in your SQL code into the editor, press the green "Run" button in the bottom right.
+
+
 ## Configuring Supabase Storage
 
 The last step is to configure Supabase storage. We need to create three buckets -- **`attachments`**, **`avatars`**, and **`server_images`**.
@@ -189,9 +228,16 @@ Since the frontend and most of the Supabase database query functions have been h
 1. Complete all `[TODO]` items in `/web/pages/[serverId]/[channelId].tsx`. Most of the main Realtime functionality needs to be added here. You may test your functions by running the app locally and opening two different browsers, logged in with two different accounts, to see if items are updating in realtime.
 2. Complete the `[TODO]` item in `/web/utils/supabase/realtime/broadcast.ts`. This function is used for sending realtime alerts to other clients.
 
+To complete this functionality, you will be using the three main types of Supabase Realtime. Please read through the documentation for each here:
+* [Broadcast](https://supabase.com/docs/guides/realtime/broadcast)
+* [Presence](https://supabase.com/docs/guides/realtime/presence)
+* [Postgres Changes](https://supabase.com/docs/guides/realtime/postgres-changes)
+
+You may check out the [Ajay's Coffee Shop](https://github.com/comp426-25s/ajays-coffee-shop) example, which provides some sample code for using both Broadcast and Postgres Changes.
+
 ## Deployment
 
-The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment.
+The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment. **Only one teammate has to deploy.**
 
 1. Using the same method that you did for a01, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
 2. Then, log into Vercel.
@@ -209,7 +255,7 @@ Please come into office hours if you encounter any issues.
 You will submit your final website to Gradescope. Before submitting, make sure that:
 
 1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
-2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a07-alias-yourname.vercel.app`.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a07-alias-teamname.vercel.app`.
 
 ## Reflection Questions
 
