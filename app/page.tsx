@@ -108,14 +108,11 @@ export default function Home() {
           <div className='w-4 h-4 bg-[#DEECDC] rounded-full'></div>
           <p className='text-sm'>Backend</p>
         </div>
-        {/* <div className='flex flex-row gap-2 items-center'>
-          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
-          <p className='text-sm'>Backend (Supabase)</p>
-        </div>
         <div className='flex flex-row gap-2 items-center'>
-          <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
+          <div className='w-4 h-4 bg-[#F1E1E9] rounded-full'></div>
           <p className='text-sm'>Design</p>
         </div>
+        {/*
         <div className='flex flex-row gap-2 items-center'>
           <div className='w-4 h-4 bg-[#dfdcec] rounded-full'></div>
           <p className='text-sm'>Advanced / Misc</p>

@@ -15,9 +15,15 @@ export default function AssignmentListing(props: {item: AssignmentItem}) {
                             <p className="text-[#374A3D] text-sm">{ props.item.code }</p>
                         </div>
                     ) : (
-                        <div className=' bg-[#F1E1E9] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
-                            <p className="text-[#4F2E3E] text-sm">{ props.item.code }</p>
-                        </div>
+                        props.item.code.startsWith("F") ? (
+                            <div className=' bg-[#351c75] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
+                                <p className="text-[#ffffff] text-sm">{ props.item.code }</p>
+                            </div>
+                        ) : (
+                            <div className=' bg-[#F1E1E9] pt-1 sm:pt-[2px] pb-[2px] pl-1 pr-1 rounded-lg'>
+                                <p className="text-[#4F2E3E] text-sm">{ props.item.code }</p>
+                            </div>
+                        )
                     )}
                     
                     <p className={`font-semibold ml-3 text-ellipsis min-w-0 overflow-hidden whitespace-nowrap ${props.item.past && " text-pink-600 line-through"}`}>{ props.item.title }</p>

@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L22
+  date: Wed Mar 26
+  title: Intro to UI / UX Design
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
+  module: '5'
+
 - code: M02
   date: Mon Mar 24
   title: Midterm 02
