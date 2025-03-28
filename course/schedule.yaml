@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L23
+  date: Fri Mar 28
+  title: Prototyping
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/16-6-FyniiFwIgjk859vYptl2q-EO4SdPGp5xAW-wKS4/edit?usp=sharing
+  module: '5'
+
 - code: L22
   date: Wed Mar 26
   title: Intro to UI / UX Design
