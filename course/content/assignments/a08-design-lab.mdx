@@ -1,0 +1,50 @@
+# A08: Design Lab
+
+## Synopsis
+
+In this assignment, you will explore the Shadcn UI design system, play around with the components, and complete design challenges. The app itself will be built using Next.js, deployed live to the internet via Vercel. This is an individual assignment!
+
+## Assignment Instructions
+
+Nearly all of the assignment instructions that you need are located on the Design Lab website once you get it up and running! 
+
+## Getting Started
+
+To get started on this assignment, please complete the following steps:
+
+1. Accept the **GitHub Classroom** assignment [here]().
+2. Clone the repository to your local machine. You can either do this by:
+<div className="ml-3">
+    * Using the CLI / Terminal: `git clone <repository-url>`
+    * Using [GitHub Desktop](https://desktop.github.com/download/): Click on the green "Code" button and select "Open with GitHub Desktop".
+</div>
+3. Open the cloned repository in Visual Studio Code.
+4. You will now see a pop-up in the bottom right corner of your screen that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container". Click on "Reopen in Container". This will boot up a Docker container, a virtual environment that will have the correct version of Node installed for you. We will use Docker for this assignment to ensure that everyone in the class is using the same up-to-date version of Node - ensuring consistency amongst students in the class and (hopefully) to prevent compatibility issues!
+    * If you do not see this pop-up, you can also open the VS Code Command Palette (Cmd + Shift + P) and search for "Remote-Containers: Reopen in Container".
+    * Again, you must ensure that you install the extension linked in the "Prerequisites" section above for this to work! If you did install this extension and are still having issues, try to reload VS Code.
+5. The Docker container will be open once you see the green "Dev Container" icon in the bottom left corner of your VS Code window! You can now ensure that Node is installed by running `node -v` in the terminal. You should see a version number printed out.
+6. If you have many detected changes in the Git tab of VSCode after the container builds, you may *clear all changes*. 
+7. _**Remember to `cd web`!**_
+8. Now, install the node packages required for this project by running `npm install` in the terminal. This will install all of the dependencies listed in the `package.json` file.
+9. You can now run the project by running `npm run dev` in the terminal. This will start a local dev server that will host your website. Your website would then be accessible at the url `http://localhost:3000` in your browser. 
+
+## Deployment
+
+The final step of this project is to deploy it to the web! Like previous assignments, we will use Vercel to deploy this assignment.
+
+1. Using the same method that you did for a01-a06, create a *deployment fork* of your classroom respository on your personal account. **Make sure this remains a private repository!**
+2. Then, log into Vercel.
+3. Press the "Add New" button on the right, then "Project"
+4. On the lefthand side under the "Import Git Repository" heading, you should see your deployment fork. Press "Import".
+5. Under Framework Preset, make sure to select "Next.js".
+6. Under "Root Directory", press *Edit*. Then, select `web` and press *Continue*. The Root Directory should now say `web`.
+7. Press "Deploy" and wait for the deployment to finish.
+
+Please come into office hours if you encounter any issues.
+
+## Submission
+
+You will submit your final website to Gradescope. Before submitting, make sure that:
+
+1. All of your changes have been pushed to GitHub. You will be submitting a GitHub repository link along with source code - if you do not push your changes, we may get an incomplete version of your website.
+2. Your website is deployed to Vercel and is accessible at the URL following the format: `https://a08-design-lab-yourname.vercel.app`.
