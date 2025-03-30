@@ -88,13 +88,13 @@
   due: Fri Mar 28 @ 11:59PM
   title: Alias
   url: assignments/a07-alias
-  past: false
+  past: true
 
 - code: F00
   due: Fri Mar 28 @ 11:59PM
   title: Final Project - Idea Submission
   url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.hw6m55iwk2u
-  past: false
+  past: true
 
 - code: F01
   due: Sun Apr 6 @ 11:59PM
