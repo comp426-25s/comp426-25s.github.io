@@ -1,10 +1,18 @@
 # Contains the course schedule.
 
+- code: L25
+  date: Wed Apr 2
+  title: Typography and Iconography
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1wGD1Ui83JLVCP7-iiM2dVx3SFJvmGK-eLc6ASEDd0Ck/edit?usp=sharing
+  module: '5'
+
 - code: L24
   date: Mon Mar 31
   title: Colors
   synopsis: null
-  youtubeUrl: null
+  youtubeUrl: https://youtu.be/rucNz_Trksg
   slidesUrl: https://docs.google.com/presentation/d/1BerOxASAsRWiuXS1gBkC_FWW2i-cpumiHSH9I5N6ehs/edit?usp=sharing
   module: '5'
 
