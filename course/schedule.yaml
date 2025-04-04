@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L26
+  date: Fri Apr 4
+  title: Responsive Design
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl:   https://docs.google.com/presentation/d/1mM6HxDl7d_4A-uFlWPRBHyC86heoPwJn_lf49_St8vE/edit?usp=sharing
+  module: '5'
+
 - code: L25
   date: Wed Apr 2
   title: Typography and Iconography
