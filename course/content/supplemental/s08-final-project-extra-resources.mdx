@@ -1,0 +1,28 @@
+# S08: Final Project Extra Resources
+
+> Written by <span className="font-semibold">Ajay Gandecha</span> for <em>COMP 426: Modern Web Programming</em>.
+
+Hello students! We have seen some amazing prototypes so far and are excited to see your projects as they progress! I wanted to share a few extra resources that may help you as you work on your final project. These resources and notes span across many different areas, so feel free to skip around and look at some of the resources that may interest you. If you have any questions about any of these resources, please see us in office hours or reach out to me via email!
+
+## Design
+
+- **[tweakcn](https://tweakcn.com)**: I highly recommend that all teams planning on adding colors and custom typography to their projects check out TweakCN! This is a great tool for finding Shadcn themes and seeing how different colors and typographies can be combined to spruce up your project. This tool is especially nice because it allows you to export the styling config directly into your project, allowing themes and changes to be applied to your entire project relatively easily.
+
+- **[awesomeshadcn/ui](https://awesome-shadcn-ui.vercel.app)**: This is a great resource for finding add-ons to Shadcn that allow you to augment the existing components and styling that Shadcn offers. If you are looking for something specific that Shadcn does not provide, check this out.
+
+- **[Shadcn Charts](https://ui.shadcn.com/charts)**: Many students want to add some sort of data visualizations to their projects. We highly recommend you do this using Shadcn Charts, which ties really well with Shadcn and has a nice API.
+
+- **[Shadcn Dark Mode](https://ui.shadcn.com/docs/dark-mode/next)**: These are the official docs for how to add dark mode functionality to your Shadcn project.
+
+- **[Supabase UI](https://supabase.com/ui/docs/getting-started/introduction)**: Supabase UI is a library of components that are built on top of Shadcn with tight integration with Supabase. This is a very new library - just got released this month (we sent a Canvas announcement about it)! There are some useful components in here, especially ones relating to realtime. 
+ 
+## Text Editing
+
+- **[react-markdown](https://github.com/remarkjs/react-markdown)**: There are many teams that may rely on some sort of textual formatting in their projects. This library allows you to render markdown in your React project, allowing for users to add line breaks, bold text, and other formatting to their text. This is a great way to allow users to customize their text without having to build a custom WYSIWYG editor.
+
+- **[shadcn-editor](https://shadcn-editor.vercel.app)**: This is a great WYSIWYG (what-you-see-is-what-you-get) editor that is built on top of Shadcn and is easy to plug into a project - it gives the user a significant amount of editing functionality, including adding headers, code blocks, formatted text, and LaTeX.  *Note: This is a community project and is not an official Shadcn component.*
+
+## Backend
+
+- **[Supabase Cron](https://supabase.com/modules/cron)**: Supabase Cron is a relatively new feature that we did not get to talk about in this course, but it might be useful for some projects. Cron allows for *server-initiated actions* - allowing the backend to perform scheduled jobs. If you are looking to run a job on a schedule (e.g., every hour, every day), this is a great way to do it. If you are looking to run some action when a timer expires, you can use Cron to accomplish this as well. You can set a Cron task to run every minute, for example, and then check if a timer has expired. If it has, you can run the action you want to perform. This is a good hack that may be better than a complicated frontend-initiated solution.
+
