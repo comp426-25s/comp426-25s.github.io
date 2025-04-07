@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L27
+  date: Mon Apr 7
+  title: Inclusive Design (i18n + Accessibility)
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl:   https://docs.google.com/presentation/d/1_MBcTkJNeRo8dYqIp7Gk535iHzcHOWOMQN3sX_y3OY8/edit?usp=sharing
+  module: '5'
+
 - code: L26
   date: Fri Apr 4
   title: Responsive Design
