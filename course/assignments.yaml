@@ -100,10 +100,16 @@
   due: Sun Apr 6 @ 11:59PM
   title: Final Project - Prototyping
   url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.qghgh42ffx21
-  past: false
+  past: true
 
 - code: A08
   due: Wed Apr 9 @ 11:59PM
   title: Design Lab
   url: assignments/a08-design-lab
+  past: false
+
+- code: F02
+  due: Sun Apr 20 @ 11:59PM
+  title: Final Project - Sprint 1
+  url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.o07skb5h0ea
   past: false
