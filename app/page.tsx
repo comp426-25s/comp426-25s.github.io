@@ -115,7 +115,7 @@ export default function Home() {
         
         <div className='flex flex-row gap-2 items-center'>
           <div className='w-4 h-4 bg-[#fff2cc] rounded-full'></div>
-          <p className='text-sm'>Misc Topics</p>
+          <p className='text-sm'>Technologies</p>
         </div>
       </div>
       <Schedule />
