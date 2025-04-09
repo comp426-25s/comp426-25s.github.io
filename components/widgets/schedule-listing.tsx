@@ -11,6 +11,7 @@ export default function ScheduleListing(props: {item: ScheduleItem}) {
         if (module === '3') return 'bg-[#dfdcec] text-[#2c3036]';
         if (module === '4') return 'bg-[#DEECDC] text-[#374A3D]';
         if (module === '5') return 'bg-[#F1E1E9] text-[#4F2E3E]';
+        if (module === '6') return 'bg-[#fff2cc] text-[#5B4B1F]';
         if (module === 'M') return 'bg-slate-600 text-slate-100';
 
         return 'bg-slate-200 text-slate-600'

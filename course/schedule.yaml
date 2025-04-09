@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L28
+  date: Wed Apr 9
+  title: Other Web Frameworks
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl:   https://docs.google.com/presentation/d/1LzP9IbLUPDEPlqA_PDWkGCRaUFW5RyZYEraVeDK24WU/edit?usp=sharing
+  module: '6'
+
 - code: L27
   date: Mon Apr 7
   title: Inclusive Design (i18n + Accessibility)
