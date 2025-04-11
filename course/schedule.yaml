@@ -1,11 +1,19 @@
 # Contains the course schedule.
 
+- code: L29
+  date: Fri Apr 11
+  title: Other Backend Services
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1uiXkUUUtpMXTgkMv4NjJ8XWcxqfeAZzZpPXJQHzUI8I/edit?usp=sharing
+  module: '6'
+
 - code: L28
   date: Wed Apr 9
   title: Other Web Frameworks
   synopsis: null
   youtubeUrl: https://youtu.be/UYhkwvsi8a4
-  slidesUrl:   https://docs.google.com/presentation/d/1LzP9IbLUPDEPlqA_PDWkGCRaUFW5RyZYEraVeDK24WU/edit?usp=sharing
+  slidesUrl: https://docs.google.com/presentation/d/1LzP9IbLUPDEPlqA_PDWkGCRaUFW5RyZYEraVeDK24WU/edit?usp=sharing
   module: '6'
 
 - code: L27
