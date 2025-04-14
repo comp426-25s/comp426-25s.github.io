@@ -1,5 +1,14 @@
 # Contains the course schedule.
 
+- code: L30
+  date: Mon Apr 14
+  title: Building a Tech Stack
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1e12cYp01KngWJEBdlJmGdbSuV0rBTZbtWpwI46Uz64k/edit?usp=sharing
+  module: '6'
+
+
 - code: L29
   date: Fri Apr 11
   title: Other Backend Services
