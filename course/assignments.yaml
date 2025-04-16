@@ -106,10 +106,22 @@
   due: Wed Apr 9 @ 11:59PM
   title: Design Lab
   url: assignments/a08-design-lab
-  past: false
+  past: true
 
 - code: F02
   due: Sun Apr 20 @ 11:59PM
   title: Final Project - Sprint 1
   url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.o07skb5h0ea
+  past: false
+
+- code: F03
+  due: Wed Apr 30 @ 11:59PM
+  title: Final Project - Sprint 2 (Final Code Deliverable)
+  url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.o6vgmsuogqx
+  past: false
+
+- code: F04
+  due: Wed Apr 30 @ 11:59PM
+  title: Final Project - Video Submission
+  url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.5uhwdwu919sa
   past: false
