@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L31
+  date: Mon Apr 21
+  title: Cross-Platform Development
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: https://docs.google.com/presentation/d/1gIypcSa4XRIYtJ7pbMGD3NlKHuqw385KiEI6yzTUH7o/edit?usp=sharing
+  module: '6'
+
 - code: L30
   date: Mon Apr 14
   title: Building a Tech Stack
