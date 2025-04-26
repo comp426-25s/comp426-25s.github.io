@@ -1,5 +1,13 @@
 # Contains the course schedule.
 
+- code: L34
+  date: Mon Apr 28
+  title: The Final Lecture
+  synopsis: null
+  youtubeUrl: null
+  slidesUrl: null
+  module: '6'
+
 - code: L33
   date: Fri Apr 25
   title: Vercel, CI/CD, and Analytics
