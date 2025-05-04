@@ -118,10 +118,16 @@
   due: Wed Apr 30 @ 11:59PM
   title: Final Project - Sprint 2 (Final Code Deliverable)
   url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.o6vgmsuogqx
-  past: false
+  past: true
 
 - code: F04
   due: Fri May 2 @ 11:59PM
   title: Final Project - Video Submission
   url: https://docs.google.com/document/d/1SSa4QJCiwQWbqvJ5MJLtG8GgAk0-hhYfpnYddcN6fbQ/edit?tab=t.0#heading=h.5uhwdwu919sa
+  past: true
+
+- code: FINAL
+  due: Mon May 5 @ 8:00AM
+  title: Final Project Showcase
+  url: assignments/final-project-showcase
   past: false
